@@ -23,7 +23,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin-add-post*') ? 'active' : '' }} " href="/admin-add-post">
                     <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-gauge-simple-high text-primary"></i>
+                        <i class="fa-solid fa-file-arrow-up text-primary "></i>
                     </div>
                     <span class="nav-link-text ms-1 ">Add Post</span>
                 </a>
