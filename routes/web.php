@@ -5,6 +5,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KetenagaanController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RuangController;
+use App\Http\Controllers\SDMController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,6 +61,15 @@ Route::post('/admin-gallery/add',[GalleryController::class,'store']);
 Route::get('/admin-gallery/{id}/edit',[GalleryController::class,'edit']);
 Route::put('/admin-gallery/{gallery}',[GalleryController::class,'update'])->name('gallery.update');
 Route::delete('/admin-gallery/{id}',[GalleryController::class,'destroy']);
+
+// SDM
+Route::get('/admin-sdm',[SDMController::class,'index']);
+Route::get('/admin-sdm/add',[SDMController::class,'create']);
+Route::post('/admin-sdm/add',[SDMController::class,'store']);
+Route::get('/admin-sdm/{id}/edit',[SDMController::class,'edit']);
+Route::put('/admin-sdm/{sdm}',[SDMController::class,'update'])->name('sdm.update');
+Route::delete('/admin-sdm/{sdm}',[SDMController::class,'destroy']);
+
 
 Route::get('/test/show', function () {
     return view('admin.post.test');
