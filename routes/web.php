@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KetenagaanController;
 use App\Http\Controllers\PostController;
@@ -51,6 +52,14 @@ Route::put('/admin-post/{post}',[PostController::class,'update'])->name('posts.u
 Route::get('/admin-post/{id}/show',[PostController::class,'show']);
 Route::post('/admin-add-post',[PostController::class,'store']);
 Route::delete('/admin-post/{id}',[PostController::class,'destroy']);
+
+// Gallery
+Route::get('/admin-gallery',[GalleryController::class,'index']);
+Route::get('/admin-gallery/add',[GalleryController::class,'create']);
+Route::post('/admin-gallery/add',[GalleryController::class,'store']);
+Route::get('/admin-gallery/{id}/edit',[GalleryController::class,'edit']);
+Route::put('/admin-gallery/{gallery}',[GalleryController::class,'update'])->name('gallery.update');
+Route::delete('/admin-gallery/{id}',[GalleryController::class,'destroy']);
 
 Route::get('/test/show', function () {
     return view('admin.post.test');
