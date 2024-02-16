@@ -17,7 +17,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <img class="img-preview " style="max-width: 250px;max-height:250px;margin:0;"
+                <img class="img-preview rounded" style="max-width: 250px;max-height:250px;margin:0;"
                     src="{{ asset('storage/' . $gallerys->gambar) }}"><br>
                 <label class="form-label " style="font-size: .8em">Gambar</label>
 

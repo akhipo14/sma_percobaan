@@ -46,11 +46,18 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link  {{ Request::is('admin-gallery*') ? 'active' : '' }}" href="/admin-gallery">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-images text-primary "></i>
                     </div>
                     <span class="nav-link-text ms-1">Manage Gallery</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
+                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-users-gear text-primary"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Manage SDM</span>
                 </a>
             </li>
             <li class="nav-item">
