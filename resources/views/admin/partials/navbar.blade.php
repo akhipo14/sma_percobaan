@@ -1,4 +1,5 @@
-<nav class="d-flex flex-row-reverse navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl "
+<nav style="overflow-y:hidden;"
+    class="d-flex flex-row-reverse navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl "
     id="navbarBlur" data-scroll="false">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
