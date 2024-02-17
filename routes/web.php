@@ -71,8 +71,8 @@ Route::put('/admin-sdm/{sdm}',[SDMController::class,'update'])->name('sdm.update
 Route::delete('/admin-sdm/{sdm}',[SDMController::class,'destroy']);
 
 
-Route::get('/test/show', function () {
-    return view('admin.post.test');
+Route::get('/test', function () {
+    return view('test');
 });
 
 
