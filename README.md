@@ -9,7 +9,7 @@
 
 ## About Laravel
 
-##ketentuan
+## ketentuan
 - jika ingin melakukan perubahan atau penambahan fitur, buat branch di branch dev terlebih dahulu
 - lakukan add, commit, push, dll ke branch dev
 - branch main hanya untuk finishing jika project telah selesai
