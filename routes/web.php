@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KetenagaanController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RuangController;
@@ -70,6 +72,15 @@ Route::get('/admin-sdm/{id}/edit',[SDMController::class,'edit']);
 Route::put('/admin-sdm/{sdm}',[SDMController::class,'update'])->name('sdm.update');
 Route::delete('/admin-sdm/{sdm}',[SDMController::class,'destroy']);
 
+// jadwal
+Route::get('/admin-jadwal',[JadwalController::class,'index']);
+
+
+// kelas
+Route::get('admin-kelas',[KelasController::class,'index']);
+Route::post('/admin-kelas',[KelasController::class,'store']);
+Route::put('/admin-kelas/{kelas}',[KelasController::class,'update'])->name('kelas.update');
+Route::delete('/admin-kelas/{id}',[KelasController::class,'destroy']);
 
 Route::get('/test', function () {
     return view('test');

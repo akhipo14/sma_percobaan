@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jadwal_pembelajaran;
+use App\Models\Jadwal;
 use Illuminate\Http\Request;
 
-class JadwalPembelajaranController extends Controller
+class JadwalController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.jadwal.index',[
+            'jadwals'=>Jadwal::all()
+        ]);
     }
 
     /**
@@ -34,7 +36,7 @@ class JadwalPembelajaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Jadwal_pembelajaran $jadwal_pembelajaran)
+    public function show(Jadwal $jadwal)
     {
         //
     }
@@ -42,7 +44,7 @@ class JadwalPembelajaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Jadwal_pembelajaran $jadwal_pembelajaran)
+    public function edit(Jadwal $jadwal)
     {
         //
     }
@@ -50,7 +52,7 @@ class JadwalPembelajaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jadwal_pembelajaran $jadwal_pembelajaran)
+    public function update(Request $request, Jadwal $jadwal)
     {
         //
     }
@@ -58,7 +60,7 @@ class JadwalPembelajaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jadwal_pembelajaran $jadwal_pembelajaran)
+    public function destroy(Jadwal $jadwal)
     {
         //
     }

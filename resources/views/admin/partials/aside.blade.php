@@ -71,7 +71,7 @@
                 {{-- sub menu --}}
                 <ul class="collapse nav flex-column" id="submenu2" data-bs-parent="#menu2">
                     <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
+                        <a class="nav-link  {{ Request::is('admin-jadwal*') ? 'active' : '' }}" href="/admin-jadwal">
                             <div
                                 class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-clock text-primary"></i>
@@ -80,7 +80,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
+                        <a class="nav-link  {{ Request::is('admin-kelas*') ? 'active' : '' }}" href="/admin-kelas">
                             <div
                                 class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-chalkboard-user text-primary"></i>
@@ -89,7 +89,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
+                        <a class="nav-link  {{ Request::is('admin-pelajaran*') ? 'active' : '' }}"
+                            href="/admin-pelajaran">
                             <div
                                 class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-book-open text-primary"></i>

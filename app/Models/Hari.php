@@ -5,8 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Jadwal_pembelajaran extends Model
+class Hari extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function jadwal(){
+        return $this->hasMany(Jadwal::class);
+    }
+
 }
