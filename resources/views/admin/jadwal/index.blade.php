@@ -3,77 +3,154 @@
     @include('sweetalert::alert')
 
     <h3 class="text-primary">Manage Jadwal</h3>
-    <button href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahmodal">Tambah</button>
-    <div class="table-responsive">
-        <div class="card p-3 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-            <div class=" table-striped table-hover ">
-                <table class=" table bg-white rounded  ">
-                    <thead>
-                        <tr>
-                            <th class="px-2 py-1 col-1">no</th>
-                            <th class="px-2 py-1 col-3">Hari</th>
-                            <th class="px-2 py-1 col-3">Kelas</th>
-                            <th class="px-2 py-1 col-3">jam 1</th>
-                            <th class="px-2 py-1 col-3">jam 2</th>
-                            <th class="px-2 py-1 col-3">jam 3</th>
-                            <th class="px-2 py-1 col-3">jam 4</th>
-                            <th class="px-2 py-1 col-3">jam 5</th>
-                            <th class="px-2 py-1 col-3">jam 6</th>
-                            {{-- <th class="px-2 py-1 col-3">jam 7</th>
-                            <th class="px-2 py-1 col-3">jam 8</th>
-                            <th class="px-2 py-1 col-3">jam 9</th>
-                            <th class="px-2 py-1 col-3">jam 10</th>
-                            <th class="px-2 py-1 col-3">jam 11</th>
-                            <th class="px-2 py-1 col-3">jam 12</th> --}}
-                            <th class="px-2 py-1 col-1 text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody style="">
-                        @if ($jadwals->isNotEmpty())
-                            @foreach ($jadwals as $item)
-                                <tr>
-                                    <td class="px-2  pb-0">
-                                        {{ $loop->iteration }}</td>
-                                    <td class="px-2 pb-0">{{ $item->hari->nama_hari }}</td>
-                                    <td class="px-2 pb-0">{{ $item->kelas->nama_kelas }}</td>
-                                    <td class="px-2 pb-0">{{ $item->mapel1->nama_pelajaran }}</td>
-                                    <td class="px-2 pb-0">{{ $item->mapel2->nama_pelajaran }}</td>
-                                    <td class="px-2 pb-0">{{ $item->mapel3->nama_pelajaran }}</td>
-                                    <td class="px-2 pb-0">{{ $item->mapel4->nama_pelajaran }}</td>
-                                    <td class="px-2 pb-0">{{ $item->mapel5->nama_pelajaran }}</td>
-                                    <td class="px-2 pb-0">{{ $item->mapel6->nama_pelajaran }}</td>
-                                    <td class="px-2 pb-0">
-                                        <div class="d-flex justify-content-center gap-2">
-
-                                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal{{ $item->id }}"><i
-                                                    class="fa-solid fa-pen-to-square"></i></button>
-
-                                            <form action="/admin-kategori/{{ $item->id }} " method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
-                                                    class="btn btn-danger btn-sm"><i
-                                                        class="fa-solid fa-trash confirm-button"></i></button>
-                                            </form>
-                                        </div>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
-                            <tr>
-                                <td colspan="6">Data Kosong</td>
-                            </tr>
-                        @endif
-                    </tbody>
-                </table>
-                {{-- <div class="style_paginator " style="float: right; ">
-                    {{ $jadwals->links() }}
-                </div> --}}
+    <div class="d-flex justify-content-start">
+        <form method="GET" action="{{ route('jadwal.index') }}">
+            <div class="row g-3 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="form-label " style="font-size: 1em">Pilih Kelas</label>
+                </div>
+                <div class="col-auto" style="display: flex;justify-content: center;align-items: center">
+                    <select class="form-select   border-primary"
+                        style="background-color: white; padding:8px 30px;box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;"
+                        aria-label="Default select example" name="kategori_id" onchange="this.form.submit()">
+                        @foreach ($kelas as $item)
+                            <option value="{{ $item->id }}" {{ $selected_kelas_id == $item->id ? 'selected' : '' }}>
+                                {{ $item->nama_kelas }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
+        </form>
+    </div>
+    <div class="card p-3 mb-5 ">
+        <div class="table-responsive  ">
+            <table class=" table bg-white  text-center">
+                <thead class=" ">
+                    <tr>
+                        <th class="border-buttom">no</th>
+                        <th class="  border-buttom">Hari</th>
+                        <th class="  border-buttom">Kelas</th>
+                        <th class="  border-buttom">07.30 - 07.30</th>
+                        <th class="  border-buttom">07.30 - 08.05</th>
+                        <th class="  border-buttom">08.05 - 08.40</th>
+                        <th class="  border-buttom">08.40 - 09.15</th>
+                        <th class="  border-buttom">09.15 - 09.50</th>
+                        <th class="  border-buttom">09.50 - 10.10</th>
+                        <th class="  border-buttom">10.10 - 10.45</th>
+                        <th class="  border-buttom">10.45 - 11.20</th>
+                        <th class="  border-buttom">11.20 - 11.55</th>
+                        <th class="  border-buttom">11.55 - 13.00</th>
+                        <th class="  border-buttom">13.00 - 13.35</th>
+                        <th class="  border-buttom">13.35 - 14.00</th>
+                        <th class=" border-buttom text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if ($jadwals->isNotEmpty())
+                        @foreach ($jadwals as $item)
+                            <tr>
+                                <td class="border-top border-buttom">{{ $loop->iteration }}</td>
+                                <td class="border-top border-buttom">{{ $item->hari->nama_hari }}</td>
+                                <td class="border-top border-buttom">{{ $item->kelas->nama_kelas }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel1->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel2->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel3->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel4->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel5->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel6->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel7->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel8->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel9->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel10->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel11->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">{{ $item->mapel12->nama_pelajaran }}</td>
+                                <td class="border-top border-buttom">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/admin-jadwal/{{ $item->id }}/edit" class="btn btn-primary btn-sm"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td class="border-top border-buttom" colspan="16" class="text-center">Data Kosong</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
         </div>
     </div>
-
-
+    {{-- <div class="table-responsive">
+        <table class="table table-sm bg-white ">
+            <thead>
+                <tr>
+                    <th class="border-top border-buttom">#</th>
+                    <th class="border-top border-buttom">Firstname</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Sex</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                      <td class="border-top border-buttom">1</td>
+                      <td class="border-top border-buttom">Anna</td>
+                      <td class="border-top border-buttom">Pitt</td>
+                      <td class="border-top border-buttom">35</td>
+                      <td class="border-top border-buttom">New York asd asd</td>
+                      <td class="border-top border-buttom">USA</td>
+                      <td class="border-top border-buttom">Female</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                </tr>
+                <tr>
+                      <td class="border-top border-buttom" class="border-top border-buttom">1</td>
+                      <td class="border-top border-buttom" class="border-top border-buttom">Anna</td>
+                      <td class="border-top border-buttom">Pitt</td>
+                      <td class="border-top border-buttom">35</td>
+                      <td class="border-top border-buttom">New York asd asd</td>
+                      <td class="border-top border-buttom">USA</td>
+                      <td class="border-top border-buttom">Female</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                      <td class="border-top border-buttom">Yes</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> --}}
 @endsection
