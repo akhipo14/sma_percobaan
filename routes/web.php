@@ -5,6 +5,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KetenagaanController;
+use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\SDMController;
@@ -81,6 +82,12 @@ Route::get('admin-kelas',[KelasController::class,'index']);
 Route::post('/admin-kelas',[KelasController::class,'store']);
 Route::put('/admin-kelas/{kelas}',[KelasController::class,'update'])->name('kelas.update');
 Route::delete('/admin-kelas/{id}',[KelasController::class,'destroy']);
+
+// pelajaran
+Route::get('admin-pelajaran',[PelajaranController::class,'index']);
+Route::post('/admin-pelajaran',[PelajaranController::class,'store']);
+Route::put('/admin-pelajaran/{pelajaran}',[PelajaranController::class,'update'])->name('pelajaran.update');
+Route::delete('/admin-pelajaran/{id}',[PelajaranController::class,'destroy']);
 
 Route::get('/test', function () {
     return view('test');
