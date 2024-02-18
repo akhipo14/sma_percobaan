@@ -40,7 +40,8 @@ Route::delete('admin-ketenagaan/{id}',[KetenagaanController::class,'destroy']);
 // Ruang
 Route::get('admin-ruang',[RuangController::class,'index']);
 Route::post('admin-ruang',[RuangController::class,'store']);
-
+Route::put('admin-ruang/{ruang}',[RuangController::class,'update'])->name('ruangs.update');
+Route::delete('admin-ruang{id}',[RuangController::class,'destroy'])->name('ruangs.delete');
 //kategori
 Route::get('admin-kategori',[KategoriController::class,'index']);
 Route::get('/admin-kategori/slug',[KategoriController::class,'createslug']);
@@ -63,7 +64,7 @@ Route::get('/admin-gallery/add',[GalleryController::class,'create']);
 Route::post('/admin-gallery/add',[GalleryController::class,'store']);
 Route::get('/admin-gallery/{id}/edit',[GalleryController::class,'edit']);
 Route::put('/admin-gallery/{gallery}',[GalleryController::class,'update'])->name('gallery.update');
-Route::delete('/admin-gallery/{id}',[GalleryController::class,'destroy']);
+Route::delete('/admin-gallery/{id}',[GalleryController::class,'destroy'])->name('galleris.delete');
 
 // SDM
 Route::get('/admin-sdm',[SDMController::class,'index']);

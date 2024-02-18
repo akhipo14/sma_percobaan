@@ -35,12 +35,10 @@
                                                 href="/admin-gallery/{{ $item->id }}/edit"><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
 
-                                            <form action="/admin-gallery/{{ $item->id }} " method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
-                                                    class="btn btn-danger btn-sm"><i
-                                                        class="fa-solid fa-trash confirm-button"></i></button>
+
+                                            <a type="submit" href="{{ route('galleris.delete', $item->id) }}"
+                                                data-confirm-delete="true" class="btn btn-danger btn-sm"><i
+                                                    class="fa-solid fa-trash confirm-button"></i></a>
                                             </form>
                                         </div>
 

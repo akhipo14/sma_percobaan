@@ -12,6 +12,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
+        $title = 'Hapus Data!';
+        $text = "Anda yakin ingin menghapus data ?";
+        confirmDelete($title, $text);      
         return view('admin.gallery.index',[
             'gallerys'=>Gallery::latest()->paginate(5)
         ]);
