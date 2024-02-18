@@ -49,7 +49,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="6">Data Kosong</td>
+                                <td colspan="6" class="text-center">Data Kosong</td>
                             </tr>
                         @endif
                     </tbody>

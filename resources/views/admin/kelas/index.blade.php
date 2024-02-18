@@ -4,53 +4,52 @@
 
     <h3 class="text-primary">Manage Kelas</h3>
     <button href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahmodal">Tambah</button>
-    <div class="table-responsive">
-        <div class="card p-3 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-            <div class=" table-striped table-hover ">
-                <table class=" table bg-white rounded  ">
-                    <thead>
-                        <tr>
-                            <th class="px-2 py-1 col-1">no</th>
-                            <th class="px-2 py-1 col-3">Kategori</th>
-                            <th class="px-2 py-1 col-1 text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody style="">
-                        @if ($kelas->isNotEmpty())
-                            @foreach ($kelas as $item)
-                                <tr>
-                                    <td class="px-2  pb-0">
-                                        {{ $loop->iteration }}</td>
-                                    <td class="px-2 pb-0">{{ $item->nama_kelas }}</td>
-                                    <td class="px-2 pb-0">
-                                        <div class="d-flex justify-content-center gap-2">
+    <div class="card p-3 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="table-responsive">
 
-                                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal{{ $item->id }}"><i
-                                                    class="fa-solid fa-pen-to-square"></i></button>
-
-                                            <form action="/admin-kelas/{{ $item->id }} " method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
-                                                    class="btn btn-danger btn-sm"><i
-                                                        class="fa-solid fa-trash confirm-button"></i></button>
-                                            </form>
-                                        </div>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
+            <table class=" table bg-white  text-center">
+                <thead>
+                    <tr>
+                        <th class="px-2 py-1 col-1 text-start">no</th>
+                        <th class="px-2 py-1 col-5 text-center">Kelas</th>
+                        <th class="px-2 py-1 col-1 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody style="">
+                    @if ($kelas->isNotEmpty())
+                        @foreach ($kelas as $item)
                             <tr>
-                                <td colspan="6">Data Kosong</td>
+                                <td class="px-2  pb-0 text-start">
+                                    {{ $loop->iteration }}</td>
+                                <td class="px-2 pb-0 text-center">{{ $item->nama_kelas }}</td>
+                                <td class="px-2 pb-0">
+                                    <div class="d-flex justify-content-center gap-2">
+
+                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#editmodal{{ $item->id }}"><i
+                                                class="fa-solid fa-pen-to-square"></i></button>
+
+                                        <form action="/admin-kelas/{{ $item->id }} " method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
+                                                class="btn btn-danger btn-sm"><i
+                                                    class="fa-solid fa-trash confirm-button"></i></button>
+                                        </form>
+                                    </div>
+
+                                </td>
                             </tr>
-                        @endif
-                    </tbody>
-                </table>
-                <div class="style_paginator " style="float: right; ">
-                    {{ $kelas->links() }}
-                </div>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="6">Data Kosong</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+            <div class="style_paginator " style="float: right; ">
+                {{ $kelas->links() }}
             </div>
         </div>
     </div>

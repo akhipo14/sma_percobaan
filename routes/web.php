@@ -74,8 +74,9 @@ Route::put('/admin-sdm/{sdm}',[SDMController::class,'update'])->name('sdm.update
 Route::delete('/admin-sdm/{sdm}',[SDMController::class,'destroy']);
 
 // jadwal
-Route::get('/admin-jadwal',[JadwalController::class,'index']);
-
+Route::get('/admin-jadwal',[JadwalController::class,'index'])->name('jadwal.index');;
+Route::get('/admin-jadwal/{id}/edit',[JadwalController::class,'edit']);
+Route::put('/admin-jadwal/{id}',[JadwalController::class,'update']);
 
 // kelas
 Route::get('admin-kelas',[KelasController::class,'index']);
