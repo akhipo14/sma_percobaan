@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     use HasFactory;
+    protected $guarded=[];
+
+    public function jadwal(){
+        return $this->hasMany(Jadwal::class);
+    }
+
 }

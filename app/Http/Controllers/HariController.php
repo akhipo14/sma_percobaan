@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jadwa;
+use App\Models\Hari;
 use Illuminate\Http\Request;
 
-class JadwaController extends Controller
+class HariController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class JadwaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Jadwa $jadwa)
+    public function show(Hari $hari)
     {
         //
     }
@@ -42,7 +42,7 @@ class JadwaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Jadwa $jadwa)
+    public function edit(Hari $hari)
     {
         //
     }
@@ -50,7 +50,7 @@ class JadwaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jadwa $jadwa)
+    public function update(Request $request, Hari $hari)
     {
         //
     }
@@ -58,7 +58,7 @@ class JadwaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jadwa $jadwa)
+    public function destroy(Hari $hari)
     {
         //
     }
