@@ -118,7 +118,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-classroom*') ? 'active' : '' }}" href="/admin-ruang">
+                <a class="nav-link {{ Request::is('admin-classroom*') ? 'active' : '' }}" href="/admin-clasroom">
                     <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-book-open text-primary"></i>
                     </div>
@@ -126,7 +126,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-prestasi*') ? 'active' : '' }}" href="/admin-ruang">
+                <a class="nav-link {{ Request::is('admin-prestasi*') ? 'active' : '' }}" href="/admin-prestasi">
                     <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-book-open text-primary"></i>
                     </div>

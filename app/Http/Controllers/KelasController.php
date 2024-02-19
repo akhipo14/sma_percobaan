@@ -15,6 +15,9 @@ class KelasController extends Controller
      */
     public function index()
     {
+        $title = 'Hapus Data!';
+        $text = "Anda yakin ingin menghapus data ?";
+        confirmDelete($title, $text);
         $kelas = Kelas::paginate(5);
         return view('admin.kelas.index',compact('kelas'));
     }
@@ -127,9 +130,13 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Kelas $kelas)
     {
-        Kelas::destroy($id);
+        $kelas->jadwal()->delete();
+    
+    // Hapus kelas
+    $kelas->delete();
+
         toast('Hapus Kelas Berhasil', 'success');
         return redirect('admin-kelas');
     }

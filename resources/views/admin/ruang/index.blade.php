@@ -4,7 +4,7 @@
 
     <button href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahmodal">Tambah
         Bangun Ruang</button>
-
+    <input type="text" class="form-control" id="tahunInput" placeholder="Tahun">
     <div class="card p-2 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
         <div class="table-responsive">
             <div class=" table-striped table-hover ">
@@ -193,4 +193,25 @@
     </div>
     </div>
     {{-- end create ruang --}}
+
+    <script>
+        var input = document.getElementById('tahunInput');
+
+        // Tambahkan event listener untuk membatasi input hanya pada tahun
+        input.addEventListener('input', function() {
+            // Hapus karakter selain angka dari nilai input
+            var tahun = this.value.replace(/\D/g, '');
+            // Batasi panjang karakter input menjadi maksimum 4 digit
+            tahun = tahun.slice(0, 4);
+            // Tambahkan angka nol di depan tahun jika panjangnya kurang dari 4 digit
+            if (tahun.length < 4) {
+                tahun = ('000' + tahun).slice(-4);
+            } else if (tahun.length > 4) {
+                // Ambil 4 digit terakhir dari tahun jika panjangnya lebih dari 4 digit
+                tahun = tahun.slice(-4);
+            }
+            // Atur nilai input menjadi tahun yang sudah diformat
+            this.value = tahun;
+        });
+    </script>
 @endsection
