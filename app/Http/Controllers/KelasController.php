@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jadwal;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,6 +15,9 @@ class KelasController extends Controller
      */
     public function index()
     {
+        $title = 'Hapus Data!';
+        $text = "Anda yakin ingin menghapus data ?";
+        confirmDelete($title, $text);
         $kelas = Kelas::paginate(5);
         return view('admin.kelas.index',compact('kelas'));
     }
@@ -52,7 +56,30 @@ class KelasController extends Controller
         $validatedData2 = $validatedData->validate([
             'nama_kelas'=> $request->nama_kelas,
         ]);
-        Kelas::create($validatedData2);
+        $kelas = Kelas::create(['nama_kelas' => $request->nama_kelas]);
+        $jadwal = [];
+        for ($i = 1; $i <= 5; $i++) {
+             // Buat entri jadwal untuk setiap hari
+            $jadwal[] = [
+            'kelas_id' => $kelas->id,
+            'hari_id' => $i,
+            'mapel_1_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_2_id' => 1,// Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_3_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_4_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_5_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_6_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_7_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_8_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_9_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_10_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_11_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+            'mapel_12_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+        ];
+    }
+
+    // Masukkan entri jadwal ke dalam database
+        Jadwal::insert($jadwal);
         toast('Tambah Kelas Berhasil', 'success');
         return redirect('/admin-kelas')->with('success','Tambah Kelas Berhasil');
 
@@ -103,9 +130,13 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Kelas $kelas)
     {
-        Kelas::destroy($id);
+        $kelas->jadwal()->delete();
+    
+    // Hapus kelas
+    $kelas->delete();
+
         toast('Hapus Kelas Berhasil', 'success');
         return redirect('admin-kelas');
     }

@@ -114,11 +114,11 @@
                     <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-book-open text-primary"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Data Ruangan</span>
+                    <span class="nav-link-text ms-1">Manage Ruangan</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-ruang*') ? 'active' : '' }}" href="/admin-ruang">
+                <a class="nav-link {{ Request::is('admin-classroom*') ? 'active' : '' }}" href="/admin-clasroom">
                     <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-book-open text-primary"></i>
                     </div>
@@ -126,19 +126,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-ruang*') ? 'active' : '' }}" href="/admin-ruang">
+                <a class="nav-link {{ Request::is('admin-prestasi*') ? 'active' : '' }}" href="/admin-prestasi">
                     <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-book-open text-primary"></i>
                     </div>
                     <span class="nav-link-text ms-1">Manage Prestasi</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-ruang*') ? 'active' : '' }}" href="/admin-ruang">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-book-open text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Manage Ruangan</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -151,7 +143,7 @@
                 {{-- sub menu --}}
                 <ul class="collapse nav flex-column" id="submenu2" data-bs-parent="#menu">
                     <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
+                        <a class="nav-link  {{ Request::is('admin-absen-sdm*') ? 'active' : '' }}" href="/admin-sdm">
                             <div
                                 class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-clock text-primary"></i>
@@ -160,7 +152,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
+                        <a class="nav-link  {{ Request::is('admin-absen-murid*') ? 'active' : '' }}"
+                            href="/admin-sdm">
                             <div
                                 class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-chalkboard-user text-primary"></i>

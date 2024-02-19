@@ -17,8 +17,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $title = 'Delete Data!';
-        $text = "Are you sure you want to delete?";
+        $title = 'Hapus Data!';
+        $text = "Anda yakin ingin menghapus data ?";
         confirmDelete($title, $text);
         return view('admin.kategori.index',[
             'kategoris'=>Kategori::latest()->paginate(5)

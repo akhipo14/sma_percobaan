@@ -29,13 +29,10 @@
                                             data-bs-target="#editmodal{{ $item->id }}"><i
                                                 class="fa-solid fa-pen-to-square"></i></button>
 
-                                        <form action="/admin-kelas/{{ $item->id }} " method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
-                                                class="btn btn-danger btn-sm"><i
-                                                    class="fa-solid fa-trash confirm-button"></i></button>
-                                        </form>
+                                        <a href="{{ route('kelas.delete', $item->id) }}" data-confirm-delete="true"
+                                            class="btn btn-danger btn-sm"><i
+                                                class="fa-solid fa-trash confirm-button"></i></a>
+
                                     </div>
 
                                 </td>

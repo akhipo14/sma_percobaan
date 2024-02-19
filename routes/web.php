@@ -7,10 +7,11 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KetenagaanController;
 use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\SDMController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,7 +41,8 @@ Route::delete('admin-ketenagaan/{id}',[KetenagaanController::class,'destroy']);
 // Ruang
 Route::get('admin-ruang',[RuangController::class,'index']);
 Route::post('admin-ruang',[RuangController::class,'store']);
-
+Route::put('admin-ruang/{ruang}',[RuangController::class,'update'])->name('ruangs.update');
+Route::delete('admin-ruang{id}',[RuangController::class,'destroy'])->name('ruangs.delete');
 //kategori
 Route::get('admin-kategori',[KategoriController::class,'index']);
 Route::get('/admin-kategori/slug',[KategoriController::class,'createslug']);
@@ -63,7 +65,7 @@ Route::get('/admin-gallery/add',[GalleryController::class,'create']);
 Route::post('/admin-gallery/add',[GalleryController::class,'store']);
 Route::get('/admin-gallery/{id}/edit',[GalleryController::class,'edit']);
 Route::put('/admin-gallery/{gallery}',[GalleryController::class,'update'])->name('gallery.update');
-Route::delete('/admin-gallery/{id}',[GalleryController::class,'destroy']);
+Route::delete('/admin-gallery/{id}',[GalleryController::class,'destroy'])->name('galleris.delete');
 
 // SDM
 Route::get('/admin-sdm',[SDMController::class,'index']);
@@ -82,7 +84,7 @@ Route::put('/admin-jadwal/{id}',[JadwalController::class,'update']);
 Route::get('admin-kelas',[KelasController::class,'index']);
 Route::post('/admin-kelas',[KelasController::class,'store']);
 Route::put('/admin-kelas/{kelas}',[KelasController::class,'update'])->name('kelas.update');
-Route::delete('/admin-kelas/{id}',[KelasController::class,'destroy']);
+Route::delete('/admin-kelas/{kelas}',[KelasController::class,'destroy'])->name('kelas.delete');
 
 // pelajaran
 Route::get('admin-pelajaran',[PelajaranController::class,'index']);
@@ -90,10 +92,28 @@ Route::post('/admin-pelajaran',[PelajaranController::class,'store']);
 Route::put('/admin-pelajaran/{pelajaran}',[PelajaranController::class,'update'])->name('pelajaran.update');
 Route::delete('/admin-pelajaran/{id}',[PelajaranController::class,'destroy']);
 
+Route::get('admin-prestasi',[PrestasiController::class,'index']);
+Route::post('/admin-prestasi/add',[PrestasiController::class,'store']);
+Route::get('/admin-prestasi/add',[PrestasiController::class,'create']);
+Route::get('/admin-prestasi/{id}/edit',[PrestasiController::class,'edit']);
+Route::put('/admin-prestasi/{id}',[PrestasiController::class,'update']);
+Route::delete('/admin-prestasi/{id}',[PrestasiController::class,'destroy']);
+
+
 Route::get('/test', function () {
     return view('test');
 });
 
+
+Route::get('/form', function () {
+    return view('date-form');
+});
+
+Route::post('/process', function (Request $request) {
+    $tanggal = $request->input('tanggal');
+    $tahun = date('Y', strtotime($tanggal));
+    return view('result', ['tahun' => $tahun]);
+});
 
 // user
 Route::get('/beranda', function () {
