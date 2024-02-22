@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KategoriController;
@@ -28,9 +30,13 @@ Route::get('/', function () {
 });
 
 // dasboard
-Route::get('/admin-dashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/admin-dashboard', function () {
+//     return view('admin.dashboard');
+// });
+
+// dashboard
+
+Route::get('admin-dashboard',[DashboardController::class,'index']);
 
 //ketenagaan
 Route::get('admin-ketenagaan',[KetenagaanController::class,'index']);
@@ -77,8 +83,8 @@ Route::delete('/admin-sdm/{sdm}',[SDMController::class,'destroy']);
 
 // jadwal
 Route::get('/admin-jadwal',[JadwalController::class,'index'])->name('jadwal.index');;
-Route::get('/admin-jadwal/{id}/edit',[JadwalController::class,'edit']);
-Route::put('/admin-jadwal/{id}',[JadwalController::class,'update']);
+Route::get('/admin-jadwal/{kelas_id}/{hari_id}/edit',[JadwalController::class,'edit']);
+Route::put('/admin-jadwal/{kelas_id}/{hari_id}',[JadwalController::class,'update'])->name('jadwal.update');
 
 // kelas
 Route::get('admin-kelas',[KelasController::class,'index']);
@@ -90,14 +96,24 @@ Route::delete('/admin-kelas/{kelas}',[KelasController::class,'destroy'])->name('
 Route::get('admin-pelajaran',[PelajaranController::class,'index']);
 Route::post('/admin-pelajaran',[PelajaranController::class,'store']);
 Route::put('/admin-pelajaran/{pelajaran}',[PelajaranController::class,'update'])->name('pelajaran.update');
-Route::delete('/admin-pelajaran/{id}',[PelajaranController::class,'destroy']);
+Route::delete('/admin-pelajaran/{pelajaran}',[PelajaranController::class,'destroy'])->name('pelajaran.delete');
 
+// prestasi
 Route::get('admin-prestasi',[PrestasiController::class,'index']);
 Route::post('/admin-prestasi/add',[PrestasiController::class,'store']);
 Route::get('/admin-prestasi/add',[PrestasiController::class,'create']);
 Route::get('/admin-prestasi/{id}/edit',[PrestasiController::class,'edit']);
 Route::put('/admin-prestasi/{id}',[PrestasiController::class,'update']);
 Route::delete('/admin-prestasi/{id}',[PrestasiController::class,'destroy']);
+
+// classroom
+Route::get('admin-classroom',[ClassroomController::class,'index']);
+Route::post('/admin-classroom/add',[ClassroomController::class,'store']);
+Route::get('/admin-classroom/add',[ClassroomController::class,'create']);
+Route::get('/admin-classroom/{id}/edit',[ClassroomController::class,'edit']);
+Route::put('/admin-classroom/{id}',[ClassroomController::class,'update']);
+Route::delete('/admin-classroom/{id}',[ClassroomController::class,'destroy']);
+
 
 
 Route::get('/test', function () {

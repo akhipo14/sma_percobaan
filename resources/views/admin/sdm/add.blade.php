@@ -27,7 +27,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <img class="img-preview " style="max-width: 250px;max-height:250px;margin:0;">
+                <img class="img-preview rounded" style="max-width: 250px;max-height:250px;margin:0;">
                 <label class="form-label " style="font-size: .8em">Foto</label>
 
                 <input type="file" id="image" name="foto" accept="image/*"
