@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jadwal;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Pelajaran;
 use Illuminate\Http\Request;
@@ -14,6 +15,9 @@ class PelajaranController extends Controller
      */
     public function index()
     {
+        $title = 'Hapus Data!';
+        $text = "Anda yakin ingin menghapus data ?";
+        confirmDelete($title, $text);
         return view('admin.pelajaran.index',[
             'pelajarans'=> Pelajaran::latest()->paginate(5)
         ]);
@@ -104,10 +108,10 @@ class PelajaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Pelajaran $pelajaran)
     {
         //
-        Pelajaran::destroy($id);
+        $pelajaran->delete();
         toast('Hapus Pelajaran Berhasil', 'success');
         return redirect('/admin-pelajaran');
     }

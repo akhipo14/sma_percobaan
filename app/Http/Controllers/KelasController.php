@@ -33,6 +33,48 @@ class KelasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(Request $request)
+    // {
+    //     $rules = [
+    //         'nama_kelas'=>'required|string|max:75|unique:kelas',
+    //     ];
+
+    //     $customMessages = [
+    //         'nama_kelas.required' => 'Nama kelas tidak boleh kosong',
+    //         'nama_kelas.max' => 'Tidak boleh lebih dari 75 karakter',
+    //         'nama_kelas.unique' => 'Nama keals sudah tersedia',
+    //         // Tambahkan pesan kustom lainnya sesuai kebutuhan
+    //     ];
+        
+    //     $validatedData= Validator::make($request->all(),$rules,$customMessages);
+    //     if($validatedData->fails()){
+    //         Alert::toast($validatedData->errors()->all(),'error');
+    //         return redirect()->back()
+    //             ->withErrors($validatedData);
+    //     }
+
+    //     $validatedData2 = $validatedData->validate([
+    //         'nama_kelas'=> $request->nama_kelas,
+    //     ]);
+    //     $kelas = Kelas::create(['nama_kelas' => $request->nama_kelas]);
+    //     $jadwal = [];
+    //     for ($i = 1; $i <= 5; $i++) {
+    //          // Buat entri jadwal untuk setiap hari
+    //         $jadwal[] = [
+    //         'kelas_id' => $kelas->id,
+    //         'hari_id' => $i,
+    //         'pelajaran_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
+    //     ];
+    // }
+
+    // // Masukkan entri jadwal ke dalam database
+    //     Jadwal::insert($jadwal);
+    //     toast('Tambah Kelas Berhasil', 'success');
+    //     return redirect('/admin-kelas')->with('success','Tambah Kelas Berhasil');
+
+    // }
+
+    // store
     public function store(Request $request)
     {
         $rules = [
@@ -56,34 +98,27 @@ class KelasController extends Controller
         $validatedData2 = $validatedData->validate([
             'nama_kelas'=> $request->nama_kelas,
         ]);
-        $kelas = Kelas::create(['nama_kelas' => $request->nama_kelas]);
+        $kelas = Kelas::create($validatedData2);
+        $kelas_id = $kelas->id;
         $jadwal = [];
-        for ($i = 1; $i <= 5; $i++) {
-             // Buat entri jadwal untuk setiap hari
-            $jadwal[] = [
-            'kelas_id' => $kelas->id,
-            'hari_id' => $i,
-            'mapel_1_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_2_id' => 1,// Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_3_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_4_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_5_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_6_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_7_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_8_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_9_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_10_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_11_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-            'mapel_12_id' => 1, // Isi dengan nilai mata_pelajaran yang sesuai
-        ];
-    }
+        for ($hari_id = 1; $hari_id <= 5; $hari_id++) {
+            for ($i = 0; $i < 12; $i++) {
+                // Buat entri jadwal untuk setiap hari sebanyak 12 kali
+                $jadwal[] = [
+                    'kelas_id' => $kelas_id,
+                    'hari_id' => $hari_id,
+                    // 'pelajaran_id' => rand(1, 5), // Isi dengan nilai mata_pelajaran yang sesuai
+                ];
+            }
+        }
 
-    // Masukkan entri jadwal ke dalam database
+        // Masukkan entri jadwal ke dalam database
         Jadwal::insert($jadwal);
         toast('Tambah Kelas Berhasil', 'success');
         return redirect('/admin-kelas')->with('success','Tambah Kelas Berhasil');
-
     }
+
+
 
     /**
      * Display the specified resource.
@@ -134,8 +169,8 @@ class KelasController extends Controller
     {
         $kelas->jadwal()->delete();
     
-    // Hapus kelas
-    $kelas->delete();
+        // Hapus kelas
+        $kelas->delete();
 
         toast('Hapus Kelas Berhasil', 'success');
         return redirect('admin-kelas');

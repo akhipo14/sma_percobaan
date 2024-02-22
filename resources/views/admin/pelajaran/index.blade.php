@@ -32,9 +32,9 @@
                                             <form action="/admin-pelajaran/{{ $item->id }} " method="post">
                                                 @method('delete')
                                                 @csrf
-                                                <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
-                                                    class="btn btn-danger btn-sm"><i
-                                                        class="fa-solid fa-trash confirm-button"></i></button>
+                                                <a href="{{ route('pelajaran.delete', $item->id) }}"
+                                                    data-confirm-delete="true" class="btn btn-danger btn-sm"><i
+                                                        class="fa-solid fa-trash confirm-button"></i></a>
                                             </form>
                                         </div>
 

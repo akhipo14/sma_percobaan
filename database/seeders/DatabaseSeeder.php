@@ -30,36 +30,36 @@ class DatabaseSeeder extends Seeder
         Kelas::create([
             'nama_kelas'=>'I B',
         ]);
-        Kelas::create([
-            'nama_kelas'=>'II A',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'II B',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'III A',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'III B',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'IV A',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'IV B',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'V A',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'V B',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'VI A',
-        ]);
-        Kelas::create([
-            'nama_kelas'=>'VI B',
-        ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'II A',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'II B',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'III A',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'III B',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'IV A',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'IV B',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'V A',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'V B',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'VI A',
+        // ]);
+        // Kelas::create([
+        //     'nama_kelas'=>'VI B',
+        // ]);
 
         Pelajaran::create([
             'nama_pelajaran'=>'Bahasa Indonesia'
@@ -97,177 +97,97 @@ class DatabaseSeeder extends Seeder
             'nama_hari'=>'Jumat'
         ]);
 
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 1,
+                'kelas_id' => 1,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
 
-        Jadwal::Create([
-            'hari_id'=>1,
-            'kelas_id'=>1,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>2,
-            'mapel_3_id'=>3,
-            'mapel_4_id'=>4,
-            'mapel_5_id'=>2,
-            'mapel_6_id'=>5,
-            'mapel_7_id'=>1,
-            'mapel_8_id'=>2,
-            'mapel_9_id'=>3,
-            'mapel_10_id'=>4,
-            'mapel_11_id'=>5,
-            'mapel_12_id'=>2,
-        ]);
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 2,
+                'kelas_id' => 1,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
 
-        Jadwal::Create([
-            'hari_id'=>2,
-            'kelas_id'=>1,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>3,
-            'mapel_3_id'=>2,
-            'mapel_4_id'=>5,
-            'mapel_5_id'=>4,
-            'mapel_6_id'=>1,
-            'mapel_7_id'=>4,
-            'mapel_8_id'=>3,
-            'mapel_9_id'=>1,
-            'mapel_10_id'=>5,
-            'mapel_11_id'=>3,
-            'mapel_12_id'=>2,
-        ]);
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 3,
+                'kelas_id' => 1,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
 
-        Jadwal::Create([
-            'hari_id'=>3,
-            'kelas_id'=>1,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>3,
-            'mapel_3_id'=>2,
-            'mapel_4_id'=>5,
-            'mapel_5_id'=>4,
-            'mapel_6_id'=>1,
-            'mapel_7_id'=>4,
-            'mapel_8_id'=>3,
-            'mapel_9_id'=>1,
-            'mapel_10_id'=>5,
-            'mapel_11_id'=>3,
-            'mapel_12_id'=>2,
-        ]);
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 4,
+                'kelas_id' => 1,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
 
-        Jadwal::Create([
-            'hari_id'=>4,
-            'kelas_id'=>1,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>3,
-            'mapel_3_id'=>2,
-            'mapel_4_id'=>5,
-            'mapel_5_id'=>4,
-            'mapel_6_id'=>1,
-            'mapel_7_id'=>4,
-            'mapel_8_id'=>3,
-            'mapel_9_id'=>1,
-            'mapel_10_id'=>5,
-            'mapel_11_id'=>3,
-            'mapel_12_id'=>2,
-        ]);
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 5,
+                'kelas_id' => 1,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
+// 
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 1,
+                'kelas_id' => 2,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
 
-        Jadwal::Create([
-            'hari_id'=>5,
-            'kelas_id'=>1,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>3,
-            'mapel_3_id'=>2,
-            'mapel_4_id'=>5,
-            'mapel_5_id'=>4,
-            'mapel_6_id'=>1,
-            'mapel_7_id'=>4,
-            'mapel_8_id'=>3,
-            'mapel_9_id'=>1,
-            'mapel_10_id'=>5,
-            'mapel_11_id'=>3,
-            'mapel_12_id'=>2,
-        ]);
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 2,
+                'kelas_id' => 2,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
+
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 3,
+                'kelas_id' => 2,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
+
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 4,
+                'kelas_id' => 2,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
+
+        for ($i = 0; $i < 12; $i++) {
+            $pelajaran_id = ($i % 5) + 1; // Menghasilkan nilai 1-5 secara berulang
+            Jadwal::create([
+                'hari_id' => 5,
+                'kelas_id' => 2,
+                'pelajaran_id' => $pelajaran_id,
+            ]);
+        }
 
 
-        Jadwal::Create([
-            'hari_id'=>1,
-            'kelas_id'=>2,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>2,
-            'mapel_3_id'=>3,
-            'mapel_4_id'=>4,
-            'mapel_5_id'=>2,
-            'mapel_6_id'=>5,
-            'mapel_7_id'=>1,
-            'mapel_8_id'=>2,
-            'mapel_9_id'=>3,
-            'mapel_10_id'=>4,
-            'mapel_11_id'=>5,
-            'mapel_12_id'=>2,
-        ]);
-
-        Jadwal::Create([
-            'hari_id'=>2,
-            'kelas_id'=>2,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>3,
-            'mapel_3_id'=>2,
-            'mapel_4_id'=>5,
-            'mapel_5_id'=>4,
-            'mapel_6_id'=>1,
-            'mapel_7_id'=>4,
-            'mapel_8_id'=>3,
-            'mapel_9_id'=>1,
-            'mapel_10_id'=>5,
-            'mapel_11_id'=>3,
-            'mapel_12_id'=>2,
-        ]);
-
-        Jadwal::Create([
-            'hari_id'=>3,
-            'kelas_id'=>2,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>3,
-            'mapel_3_id'=>2,
-            'mapel_4_id'=>5,
-            'mapel_5_id'=>4,
-            'mapel_6_id'=>1,
-            'mapel_7_id'=>4,
-            'mapel_8_id'=>3,
-            'mapel_9_id'=>1,
-            'mapel_10_id'=>5,
-            'mapel_11_id'=>3,
-            'mapel_12_id'=>2,
-        ]);
-
-        Jadwal::Create([
-            'hari_id'=>4,
-            'kelas_id'=>2,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>3,
-            'mapel_3_id'=>2,
-            'mapel_4_id'=>5,
-            'mapel_5_id'=>4,
-            'mapel_6_id'=>1,
-            'mapel_7_id'=>4,
-            'mapel_8_id'=>3,
-            'mapel_9_id'=>1,
-            'mapel_10_id'=>5,
-            'mapel_11_id'=>3,
-            'mapel_12_id'=>2,
-        ]);
-
-        Jadwal::Create([
-            'hari_id'=>5,
-            'kelas_id'=>2,
-            'mapel_1_id'=>1,
-            'mapel_2_id'=>3,
-            'mapel_3_id'=>2,
-            'mapel_4_id'=>5,
-            'mapel_5_id'=>4,
-            'mapel_6_id'=>1,
-            'mapel_7_id'=>4,
-            'mapel_8_id'=>3,
-            'mapel_9_id'=>1,
-            'mapel_10_id'=>5,
-            'mapel_11_id'=>3,
-            'mapel_12_id'=>2,
-        ]);
 
 
     }

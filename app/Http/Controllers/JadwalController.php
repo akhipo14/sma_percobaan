@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hari;
 use App\Models\Jadwal;
 use App\Models\Kelas;
 use App\Models\Pelajaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class JadwalController extends Controller
 {
@@ -14,17 +17,28 @@ class JadwalController extends Controller
      */
     public function index(Request $request)
     {
+        $kelasId = $request->input('kelas');
+        $kelas2 = $kelasId ? Kelas::find($kelasId) : Kelas::first();
+        $hari = Hari::all();
         $kelas = Kelas::all();
-
-        // Mengambil jadwal dengan kelas_id = 1 sebagai default
-        $selected_kelas_id = $request->input('kategori_id', 1);
-
-        // Mengambil jadwal berdasarkan kelas yang dipilih oleh pengguna
-        $jadwals = Jadwal::where('kelas_id', $selected_kelas_id)->get();
-
-        return view('admin.jadwal.index', compact('jadwals', 'kelas', 'selected_kelas_id'));
+        $pelajarans = Pelajaran::all();
+        // Ambil semua hari yang tersedia
+        $jadwals_hari = Hari::all();
+        // Inisialisasi array kosong untuk menampung data jadwal berdasarkan hari
+        $jadwals_by_hari = [];
+        // Iterasi melalui setiap hari untuk mengambil data jadwal berdasarkan hari_id
+        foreach ($hari as $hariItem) {
+            // Ambil jadwal berdasarkan hari_id saat ini
+            $jadwals = Jadwal::where('hari_id', $hariItem->id)->where('kelas_id', $kelas2->id)->get();
+            // Masukkan ke dalam array $jadwals_by_hari
+            $jadwals_by_hari[$hariItem->id] = $jadwals;
+        }
+        
+        return view('admin.jadwal.index', compact('kelas', 'jadwals_by_hari','pelajarans','jadwals_hari','kelas2'));
     }
     
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -53,39 +67,58 @@ class JadwalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit($kelas_id, $hari_id)
     {
-        //
-        return view('admin.jadwal.edit',[
-            'jadwals'=>Jadwal::find($id),
-            'kelas'=> Kelas::all(),
-            'pelajarans'=>Pelajaran::all()
-        ]);
+        
+        // $jadwals = Jadwal::where('kelas_id',$kelas_id)
+        // ->where('hari_id',$hari_id)->first();
+        $pelajarans = Pelajaran::all();
+        // dd($jadwals);
+
+        // 
+        $hari = Hari::all();
+        // Ambil semua hari yang tersedia
+        $jadwals_hari = Hari::all();
+        // Inisialisasi array kosong untuk menampung data jadwal berdasarkan hari
+        $jadwals_by_hari = [];
+        // Iterasi melalui setiap hari untuk mengambil data jadwal berdasarkan hari_id
+        foreach ($hari as $hariItem) {
+            // Ambil jadwal berdasarkan hari_id saat ini
+            $jadwals = Jadwal::where('hari_id',$hari_id)->where('kelas_id',$kelas_id)->get();
+            // Masukkan ke dalam array $jadwals_by_hari
+            $jadwals_by_hari[$hariItem->id] = $jadwals;
+        }
+
+
+        return view('admin.jadwal.edit',compact('jadwals','pelajarans','jadwals_by_hari'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kelas_id,$hari_id)
     {
-        $validatedData = $request->validate([
-            'mapel_1_id'=>'required',
-            'mapel_1_id'=>'required',
-            'mapel_3_id'=>'required',
-            'mapel_4_id'=>'required',
-            'mapel_5_id'=>'required',
-            'mapel_6_id'=>'required',
-            'mapel_7_id'=>'required',
-            'mapel_8_id'=>'required',
-            'mapel_9_id'=>'required',
-            'mapel_10_id'=>'required',
-            'mapel_11_id'=>'required',
-            'mapel_12_id'=>'required',
-        ]);
+       // Ambil data jadwal berdasarkan kelas_id dan hari_id
+       $selectedPelajaranIds = $request->input('pelajaran_id');
+       $jadwals = Jadwal::where('kelas_id', $kelas_id)
+       ->where('hari_id', $hari_id)
+       ->get();
 
-        Jadwal::where('id',$id)->update($validatedData);
-        toast('Edit data berhasil','success');
-        return redirect('/admin-jadwal');
+       $i = 0;
+       foreach ($jadwals as $jadwal) {
+           // Update data pelajaran_id dari request
+               
+           if (isset($selectedPelajaranIds[$i])) {
+               $jadwal->pelajaran_id = $selectedPelajaranIds[$i];
+           }
+           // Simpan perubahan
+
+           $i++;
+           $jadwal->save();
+
+        }
+       alert('update','success');
+        return redirect('admin-jadwal');
     }
 
     /**

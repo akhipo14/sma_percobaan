@@ -45,6 +45,8 @@ class PostController extends Controller
             'foto.image' =>'Foto Harus berupa gambar',
             'foto.mimes' =>'Format gambar jpeg,png,jpg,gif,svg',
             'body.required' => 'Body tidak boleh kosong',
+            'kategori_id.required' => 'Kategori tidak boleh kosong',
+
             // Tambahkan pesan kustom lainnya sesuai kebutuhan
         ];
 

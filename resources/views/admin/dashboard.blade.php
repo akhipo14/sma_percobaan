@@ -1,25 +1,90 @@
 @extends('admin.main')
 @section('content')
-    <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <h3 class="text-primary mb-3">Welcome Admin !</h3>
+    <div class="row ">
+        <div class="col">
+            <div class="card">
+                <div class="card-body p-3 ">
+                    <div class="row gap-0">
+                        <div class="col-9 ">
+                            <h3 class=" mb-0 text-uppercase font-weight-bolder">{{ $sdms }}</h4>
+                                <p class="mb-0 font-weight-bold text-sm">Guru dan Karyawan</p>
+                        </div>
+                        <div class="col-3 tex-center " style="display: flex;justify-content: center;align-items: center">
+                            <h2><i class="fa-solid fa-chalkboard-user text-primary "></i>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body p-3 ">
+                    <div class="row gap-0">
+                        <div class="col-9 ">
+                            <h3 class=" mb-0 text-uppercase font-weight-bolder">{{ $prestasis }}</h4>
+                                <p class="mb-0 font-weight-bold text-sm">Prestasi</p>
+                        </div>
+                        <div class="col-3 tex-center " style="display: flex;justify-content: center;align-items: center">
+                            <h2><i class="fa-solid fa-medal text-primary"></i>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body p-3 ">
+                    <div class="row gap-0">
+                        <div class="col-8 ">
+                            <h3 class=" mb-0 text-uppercase font-weight-bolder">{{ $kelas }}</h4>
+                                <p class="mb-0 font-weight-bold text-sm">Ruang Kelas</p>
+                        </div>
+                        <div class="col-4 tex-center " style="display: flex;justify-content: center;align-items: center">
+                            <h2><i class="fa-solid fa-door-closed text-primary"></i>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body p-3 ">
+                    <div class="row gap-0">
+                        <div class="col-9 ">
+                            <h3 class=" mb-0 text-uppercase font-weight-bolder">{{ $ruangs }}</h4>
+                                <p class="mb-0 font-weight-bold text-sm">Bangun Ruang</p>
+                        </div>
+                        <div class="col-3 tex-center " style="display: flex;justify-content: center;align-items: center">
+                            <h2>
+                                <i class="fa-solid fa-building text-primary"></i>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="row">
+        <div class="col-xl-3 mb-xl-0 mb-4">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-10">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                                <h5 class="font-weight-bolder">
-                                    $53,000
-                                </h5>
-                                <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                    since yesterday
-                                </p>
+                                <h3 class=" mb-0 text-uppercase font-weight-bolder">{{ $sdms }}</h4>
+
+                                    <p class="mb-0 font-weight-bold">Guru dan Karyawan </p>
                             </div>
                         </div>
-                        <div class="col-4 text-end">
+                        <div class="col-2 text-center">
                             <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="fa-solid fa-chalkboard-user text-white"></i>
+
                             </div>
                         </div>
                     </div>
@@ -101,5 +166,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
