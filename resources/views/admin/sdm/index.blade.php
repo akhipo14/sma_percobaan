@@ -12,6 +12,7 @@
                         <tr>
                             <th class="px-1 py-1 col-1">no</th>
                             <th class="px-1 py-1 col-3">Nama</th>
+                            <th class="px-1 py-1 col-3">NIP</th>
                             <th class="px-1 py-1 col-3 ">Posisi</th>
                             <th class="px-1 py-1 col-1 text-center">Aksi</th>
                         </tr>
@@ -23,6 +24,7 @@
                                     <td class="px-1  pb-0">
                                         {{ $loop->iteration }}</td>
                                     <td class="px-1 pb-0">{{ $item->nama }}</td>
+                                    <td class="px-1 pb-0">{{ $item->nip }}</td>
                                     <td class="px-1 pb-0">{{ $item->posisi }}</td>
                                     <td class="px-1 pb-0">
                                         <div class="d-flex justify-content-center gap-2">
