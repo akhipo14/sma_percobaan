@@ -13,6 +13,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\SDMController;
+use App\Http\Controllers\SDMUserController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -33,6 +34,8 @@ Route::get('/berita', function () {
     return view('user.berita');
 });
 
+Route::get('/berita/{post}',[UserController::class,'blog_single']);
+
 Route::get('/sambutan', function () {
     return view('user.sambutan.index');
 });
@@ -49,9 +52,9 @@ Route::get('/fasilitas', function () {
     return view('user.fasilitas.index');
 });
 
-Route::get('/sdm', function () {
-    return view('user.sdm.index');
-});
+Route::get('/guru-dan-karyawan',[SDMUserController::class,'index']);
+
+
 // dasboard
 // Route::get('/admin-dashboard', function () {
 //     return view('admin.dashboard');

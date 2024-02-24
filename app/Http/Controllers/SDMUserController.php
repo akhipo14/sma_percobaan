@@ -2,41 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gallery;
-use App\Models\Kategori;
-use Illuminate\Http\Request;
-use App\Models\Kelas;
-use App\Models\Post;
-use App\Models\Prestasi;
-use App\Models\Ruang;
 use App\Models\SDM;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class SDMUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('user.index',[
-            'kelas'=>Kelas::count(),
-            'ruangs'=>Ruang::count(),
-            'sdms'=>SDM::count(),
-            'prestasis'=>Prestasi::count(),    
-            'posts'=>Post::latest()->paginate(3),
-            'gallerys'=>Gallery::all()
-
-        ]);
-    }
-
-    public function blog_single(Post $post){
-        $post_id = Post::find($post->id);
-        $post_all_by_kategori = Post::where('kategori_id',$post->kategori_id)->get();
-        $kategoris = Kategori::withCount('post' )->get();
-        return view('user.blog.blog-single',[
-            'posts'=>$post_id,
-            'kategoris'=>$kategoris,
-            'post_all_by_kategori' => $post_all_by_kategori,
+        Return View('user.sdm.index',[
+            'sdm'=>SDM::all()
         ]);
     }
 

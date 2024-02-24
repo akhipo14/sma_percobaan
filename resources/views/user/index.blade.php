@@ -16,7 +16,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-11">
                         <div class="row justify-content-center">
-                            <div class="col-lg-3 col-md-5 col-3 d-md-flex align-items-md-stretch">
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                                 <div class="count-box py-3">
                                     <img src="assets/img/akreditasi.png" class="img-fluid" alt="" />
                                 </div>
@@ -98,8 +98,8 @@
                     @foreach ($posts as $item)
                         <div class="col-md-4">
                             <div class="icon-box p-3" data-aos="fade-up">
-                                <img src="{{ asset('storage/' . $item->foto) }}" class="card-img-top rounded"
-                                    alt="..." />
+                                <img src="{{ asset('storage/' . $item->foto) }}" style="max-height:200px;object-fit: cover;"
+                                    class="card-img-top rounded" alt="..." />
                                 <div class="card-body" style="padding: 10px">
                                     <h6 class="card-title" style="font-family: 'Inter-boldd'">
                                         {{ substr(strtoupper($item->judul), 0, 52) }}...
@@ -109,12 +109,12 @@
                                     </p>
                                 </div>
                                 <div class="card-body" style="padding: 10px">
-                                    <a href="blog-single.html" class="card-link"
+                                    <a href="/berita/{{ $item->id }}" class="card-link"
                                         style="color: #666666; font-family: 'Inter-boldd'">BACA SELENGKAPNYA >></a>
                                 </div>
                                 <hr />
                                 <div class="card-body" style="padding: 10px">
-                                    <a href="#" class="card-link" style="color: #666666">Admin</a>
+                                    <a href="" class="card-link" style="color: #666666">Admin</a>
                                 </div>
                             </div>
                         </div>

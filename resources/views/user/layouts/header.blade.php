@@ -16,7 +16,7 @@
                             <li><a href="/visi-misi">Visi Misi</a></li>
                             <li><a href="/branding">Branding</a></li>
                             <li><a href="/fasilitas">Fasilitas</a></li>
-                            <li><a href="/sdm">Guru dan Karyawan</a></li>
+                            <li><a href="/guru-dan-karyawan">Guru dan Karyawan</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
