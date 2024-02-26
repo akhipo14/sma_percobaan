@@ -66,9 +66,12 @@ class PrestasiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Prestasi $prestasi)
+    public function show()
     {
-        //
+        return view('user.prestasi.index',[
+            'prestasis'=>Prestasi::latest()->paginate(10),
+            'total_prestasis'=>Prestasi::count()
+        ]);
     }
 
     /**

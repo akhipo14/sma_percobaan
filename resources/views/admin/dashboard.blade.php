@@ -1,6 +1,11 @@
 @extends('admin.main')
 @section('content')
-    <h3 class="text-primary mb-3">Welcome Admin !</h3>
+    @include('sweetalert::alert')
+    <h3 class="text-primary mb-3">Welcome {{ auth()->user()->name }} !</h3>
+    <form action="/logout" method="post">
+        @csrf
+        <button type="submit" class="btn btn-danger">Log Out</button>
+    </form>
     <div class="row ">
         <div class="col">
             <div class="card">

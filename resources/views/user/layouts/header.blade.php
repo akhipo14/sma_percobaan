@@ -23,7 +23,7 @@
                         <a href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="/berita">Berita</a></li>
-                            <li><a href="prestasi.html">Prestasi</a></li>
+                            <li><a href="/prestasi">Prestasi</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -33,7 +33,7 @@
                             <li><a href="">Classroom</a></li>
                         </ul>
                     </li>
-                    <li><a href="kontak.html">Kontak Kami</a></li>
+                    <li><a href="/kontak">Kontak Kami</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

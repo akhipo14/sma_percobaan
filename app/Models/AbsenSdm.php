@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SDM extends Model
+class AbsenSdm extends Model
 {
     use HasFactory;
     protected $guarded=[];
 
-    public function absensdm(){
-        return $this->hasMany(AbsenSdm::class);
+    public function SDM(){
+        return $this->belongsTo(SDM::class,'s_d_m_s_id');
     }
+
 
 }

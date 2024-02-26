@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Login;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -18,6 +20,34 @@ class LoginController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+     public function authenticate(Request $request){
+        $credentials = $request->validate([
+            'name' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            toast('Login berhasil', 'success');
+            return redirect()->intended('/admin-dashboard');
+        }
+
+         toast('Nama atau Password Salah !', 'error');
+        return redirect('/login');
+     }
+
+     public function logout(Request $request): RedirectResponse
+     {
+         Auth::logout();
+      
+         $request->session()->invalidate();
+      
+         $request->session()->regenerateToken();
+      
+         return redirect('/');
+     }
+
     public function create()
     {
         //

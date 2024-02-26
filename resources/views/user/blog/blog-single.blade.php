@@ -25,9 +25,10 @@
                 <div class="row">
                     <div class="col-lg-8 entries">
                         <article class="entry entry-single">
-                            <div class="entry-img">
-                                <img src="{{ asset('storage/' . $posts->foto) }}" style="width: 100%" alt=""
-                                    class="img-fluid" />
+                            <div class="entry-img p-3">
+                                <img src="{{ asset('storage/' . $posts->foto) }}"
+                                    style="max-height:400px;object-fit: cover;" class="posisi-foto-blog  rounded"
+                                    alt="" class="img-fluid" />
                             </div>
 
                             <h2 class="entry-title">

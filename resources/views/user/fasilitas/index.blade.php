@@ -1,79 +1,33 @@
 @extends('user.main')
 @section('content')
     <main id="main">
-        <!-- ======= Work Process Section ======= -->
-        <section id="work-process" class="work-process">
-            <div class="container mt-5 justify-content-center">
-                <div class="section-title" data-aos="fade-up"></div>
-                <div class="row content">
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
+
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-in">
+                <div class="section-title pt-5" data-aos="fade-up">
+                    <h2>Fasilitas</h2>
+                    <hr class="m-auto" style="border: 3px solid #3e62f4; width: 100px" />
                 </div>
-                <div class="row content">
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                </div>
-                <div class="row content">
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                </div>
-                <div class="row content">
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                </div>
-                <div class="row content">
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                </div>
-                <div class="row content">
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="assets/img/fasilitas.png" class="img-fluid" alt="" />
-                    </div>
+                <div class="row justify-content-cente mt-2">
+                    @foreach ($ruangs as $item)
+                        <div class="col-md-4 mt-4">
+                            <div class="icon-box p-3 m-0" data-aos="fade-up">
+                                <img src="{{ asset('storage/' . $item->image) }}"
+                                    class="card-img-top rounded responsive-image-fasilitas" alt="..." />
+                                <div class="card-body" style="padding: 10px">
+                                    <h6 class="card-title mt-1" style="font-family: 'Inter-boldd'">
+                                        {{ $item->jenis_ruang }}
+                                    </h6>
+                                </div>
+
+                            </div>
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
         </section>
-        <!-- End Work Process Section -->
+        <!-- End Team Section -->
     </main>
     <!-- End #main -->
 @endsection
