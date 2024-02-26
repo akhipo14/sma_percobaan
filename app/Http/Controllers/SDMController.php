@@ -39,6 +39,10 @@ class SDMController extends Controller
             'foto.max:2048' =>'Ukuran foto maksimal 2mb',
             'foto.image' =>'Foto Harus berupa gambar',
             'foto.mimes' =>'Format foto jpeg,png,jpg,gif,svg',
+            'nip.required' =>'NIP tidak boleh kosong',
+            'nip.numeric' =>'NIP harus berupa angka',
+            'nip.min' =>'NIP Minimal 9 angka',
+            
             // Tambahkan pesan kustom lainnya sesuai kebutuhan
         ];
 
@@ -46,6 +50,7 @@ class SDMController extends Controller
             'nama'=> 'required|max:100|string',
             'posisi'=> 'required|max:100|string',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nip' => 'required|numeric|min:9'
         ],$customMessages);
 
         if($request->file('foto')){
@@ -91,6 +96,10 @@ class SDMController extends Controller
             'foto.max:2048' =>'Ukuran foto maksimal 2mb',
             'foto.image' =>'Foto Harus berupa gambar',
             'foto.mimes' =>'Format foto jpeg,png,jpg,gif,svg',
+            'nip.required' =>'NIP tidak boleh kosong',
+            'nip.numeric' =>'NIP harus berupa angka',
+            'nip.min' =>'NIP Minimal 9 angka',
+            
             // Tambahkan pesan kustom lainnya sesuai kebutuhan
         ];
 
@@ -99,6 +108,7 @@ class SDMController extends Controller
             'nama'=> 'required|max:100|string',
             'posisi'=> 'required|max:100|string',
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nip' => 'required|numeric|min:9'
         ],$customMessages);
 
         if($request->file('foto')){

@@ -17,6 +17,16 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" style="font-size: .8em">NIP</label>
+                <input type="number" name="nip" id="nip" class="form-control  @error('nip') is-invalid @enderror"
+                    value="{{ $sdms->nip }}" id="exampleFormControlInput1">
+                @error('nip')
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="font-size: .8em">Posisi</label>
                 <input type="text" name="posisi" id="posisi"
                     class="form-control  @error('posisi') is-invalid @enderror" value="{{ $sdms->posisi }}"
