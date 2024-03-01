@@ -10,8 +10,5 @@ class SDM extends Model
     use HasFactory;
     protected $guarded=[];
 
-    public function absensdm(){
-        return $this->hasMany(AbsenSdm::class);
-    }
 
 }

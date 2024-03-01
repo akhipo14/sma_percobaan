@@ -29,8 +29,8 @@
                     <li class="dropdown">
                         <a href="#"><span>Online Learning</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="mapel.html">Jadwal Mapel</a></li>
-                            <li><a href="">Classroom</a></li>
+                            <li><a href="/jadwal_kelas">Jadwal Mapel</a></li>
+                            <li><a href="/classroom">Classroom</a></li>
                         </ul>
                     </li>
                     <li><a href="/kontak">Kontak Kami</a></li>

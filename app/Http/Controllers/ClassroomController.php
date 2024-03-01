@@ -114,4 +114,17 @@ class ClassroomController extends Controller
         return redirect('/admin-classroom');
  
     }
+
+    public function indexuser(Request $request){
+        $kelas_id = $request->input('kelas');
+        $kelas_by_id = $kelas_id ? Kelas::find($kelas_id) : Kelas::first();
+        
+        $kelas = Kelas::all();
+        $classrooms = Classroom::where('kelas_id',$kelas_by_id->id)->get();
+        // dd($classrooms);
+        return view('user.classroom.index',[
+            'classrooms'=> $classrooms,
+            'kelas'=>$kelas
+        ]);
+    }
 }

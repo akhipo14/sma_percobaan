@@ -2,7 +2,7 @@
 @section('content')
     <main id="main">
 
-        <section id="services" class="services">
+        <section style="background-color: rgb(247, 247, 247)" id="services" class="services">
             <div class="container" data-aos="fade-in">
                 <div class="section-title pt-5" data-aos="fade-up">
                     <h2>Fasilitas</h2>
@@ -10,8 +10,8 @@
                 </div>
                 <div class="row justify-content-cente mt-2">
                     @foreach ($ruangs as $item)
-                        <div class="col-md-4 mt-4">
-                            <div class="icon-box p-3 m-0" data-aos="fade-up">
+                        <div class="col-md-4 mt-4 ">
+                            <div class="icon-box p-3 m-0 " data-aos="fade-up">
                                 <img src="{{ asset('storage/' . $item->image) }}"
                                     class="card-img-top rounded responsive-image-fasilitas" alt="..." />
                                 <div class="card-body" style="padding: 10px">

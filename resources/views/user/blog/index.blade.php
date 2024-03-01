@@ -15,10 +15,10 @@
         <!-- End Breadcrumbs -->
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">
-            <div class="container" data-aos="fade-in">
-                <div class="row justify-content-start">
+            <div class="container " data-aos="fade-in">
+                <div class="row justify-content-start mt-5">
                     @foreach ($posts as $item)
-                        <div class="col-md-4 mt-5">
+                        <div class="col-md-4 ">
                             <div class="icon-box p-3" data-aos="fade-up">
                                 <img src="{{ asset('storage/' . $item->foto) }}" style="max-height:200px;object-fit: cover;"
                                     class="card-img-top rounded" alt="..." />

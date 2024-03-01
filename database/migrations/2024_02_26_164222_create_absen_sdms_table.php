@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('absen_sdms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('s_d_m_s_id')->constrained()->onDelete('cascade');
+            $table->string('nama');
+            $table->string('nip');
+            $table->string('posisi');
+            $table->string('ket');
             $table->timestamps();
         });
     }

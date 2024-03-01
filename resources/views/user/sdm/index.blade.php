@@ -1,5 +1,6 @@
 @extends('user.main')
 @section('content')
+    @include('sweetalert::alert')
     <main id="main">
 
         <section id="services" class="services">

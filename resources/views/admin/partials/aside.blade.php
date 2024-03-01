@@ -10,162 +10,160 @@
         </a>
         <hr class="horizontal dark mt-0">
     </div>
-    <div class="collapse navbar-collapse" id="sidenav-collapse-main">
 
-        <ul class="navbar-nav" style="margin-top: 20vh;">
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-dashboard*') ? 'active' : '' }} " href="/admin-dashboard">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-gauge-simple-high text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1 ">Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-add-post*') ? 'active' : '' }} " href="/admin-add-post">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-file-arrow-up text-primary "></i>
-                    </div>
-                    <span class="nav-link-text ms-1 ">Add Post</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-post*') ? 'active' : '' }} " href="/admin-post">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-folder-open text-primary "></i>
-                    </div>
-                    <span class="nav-link-text ms-1 ">Manage Post</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link  {{ Request::is('admin-kategori*') ? 'active' : '' }}" href="/admin-kategori">
-                    <div class="border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-folder-open text-primary "></i>
-                    </div>
-                    <span class="nav-link-text ms-1 ">Manage Category</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link  {{ Request::is('admin-gallery*') ? 'active' : '' }}" href="/admin-gallery">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-images text-primary "></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Manage Gallery</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-users-gear text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Manage SDM</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link "href="#submenu2" data-bs-toggle="collapse">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-book text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Manage Mapel</span>
-                </a>
-                {{-- sub menu --}}
-                <ul class="collapse nav flex-column" id="submenu2" data-bs-parent="#menu2">
-                    <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-jadwal*') ? 'active' : '' }}" href="/admin-jadwal">
-                            <div
-                                class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-clock text-primary"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Manage Jadwal</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-kelas*') ? 'active' : '' }}" href="/admin-kelas">
-                            <div
-                                class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-chalkboard-user text-primary"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Manage Kelas</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-pelajaran*') ? 'active' : '' }}"
-                            href="/admin-pelajaran">
-                            <div
-                                class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-book-open text-primary"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Manage Pelajaran</span>
-                        </a>
-                    </li>
-                </ul>
-                {{-- end sub menu --}}
-            </li>
-            <li class="nav-item">
+    <ul class="navbar-nav collapse navbar-collapse" style="margin-top: 15vh; height: 85vh;">
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('admin-dashboard*') ? 'active' : '' }} " href="/admin-dashboard">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-gauge-simple-high text-primary"></i>
+                </div>
+                <span class="nav-link-text ms-1 ">Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('admin-add-post*') ? 'active' : '' }} " href="/admin-add-post">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-file-arrow-up text-primary "></i>
+                </div>
+                <span class="nav-link-text ms-1 ">Add Post</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('admin-post*') ? 'active' : '' }} " href="/admin-post">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-folder-open text-primary "></i>
+                </div>
+                <span class="nav-link-text ms-1 ">Manage Post</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  {{ Request::is('admin-kategori*') ? 'active' : '' }}" href="/admin-kategori">
+                <div class="border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-folder-open text-primary "></i>
+                </div>
+                <span class="nav-link-text ms-1 ">Manage Category</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  {{ Request::is('admin-gallery*') ? 'active' : '' }}" href="/admin-gallery">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-images text-primary "></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Gallery</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-users-gear text-primary"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage SDM</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link "href="#submenu2" data-bs-toggle="collapse">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-book text-primary"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Mapel</span>
+            </a>
+            {{-- sub menu --}}
+            <ul class="collapse nav flex-column" id="submenu2" data-bs-parent="#menu2">
+                <li class="nav-item">
+                    <a class="nav-link  {{ Request::is('admin-jadwal*') ? 'active' : '' }}" href="/admin-jadwal">
+                        <div
+                            class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-clock text-primary"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Manage Jadwal</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  {{ Request::is('admin-kelas*') ? 'active' : '' }}" href="/admin-kelas">
+                        <div
+                            class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-chalkboard-user text-primary"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Manage Kelas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  {{ Request::is('admin-pelajaran*') ? 'active' : '' }}" href="/admin-pelajaran">
+                        <div
+                            class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-book-open text-primary"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Manage Pelajaran</span>
+                    </a>
+                </li>
+            </ul>
+            {{-- end sub menu --}}
+        </li>
+        {{-- <li class="nav-item">
                 <a class="nav-link  {{ Request::is('admin-ketenagaan*') ? 'active' : '' }}" href="/admin-ketenagaan">
                     <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-book-open text-primary"></i>
                     </div>
                     <span class="nav-link-text ms-1">Ketenagaan</span>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-ruang*') ? 'active' : '' }}" href="/admin-ruang">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-book-open text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Manage Ruangan</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-classroom*') ? 'active' : '' }}" href="/admin-classroom">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-book-open text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Manage Classroom</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin-prestasi*') ? 'active' : '' }}" href="/admin-prestasi">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-book-open text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Manage Prestasi</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link "href="#submenu2" data-bs-toggle="collapse">
-                    <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-book text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Manage Absensi</span>
-                </a>
-                {{-- sub menu --}}
-                <ul class="collapse nav flex-column" id="submenu2" data-bs-parent="#menu">
-                    <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-absen-sdm*') ? 'active' : '' }}" href="/admin-sdm">
-                            <div
-                                class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-clock text-primary"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Absen SDM</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  {{ Request::is('admin-absen-murid*') ? 'active' : '' }}"
-                            href="/admin-sdm">
-                            <div
-                                class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-chalkboard-user text-primary"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Absen Murid</span>
-                        </a>
-                    </li>
+            </li> --}}
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('admin-ruang*') ? 'active' : '' }}" href="/admin-ruang">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-book-open text-primary"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Ruangan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('admin-classroom*') ? 'active' : '' }}" href="/admin-classroom">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-book-open text-primary"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Classroom</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('admin-prestasi*') ? 'active' : '' }}" href="/admin-prestasi">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-book-open text-primary"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Prestasi</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link "href="#submenu2" data-bs-toggle="collapse">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-book text-primary"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Absensi</span>
+            </a>
+            {{-- sub menu --}}
+            <ul class="collapse nav flex-column" id="submenu2" data-bs-parent="#menu">
+                <li class="nav-item">
+                    <a class="nav-link  {{ Request::is('admin-absen-sdm*') ? 'active' : '' }}"
+                        href="/admin-absen-sdm">
+                        <div
+                            class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-clock text-primary"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Absen SDM</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  {{ Request::is('admin-absen-murid*') ? 'active' : '' }}" href="/admin-sdm">
+                        <div
+                            class="ps-3 border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-chalkboard-user text-primary"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Absen Murid</span>
+                    </a>
+                </li>
 
-                </ul>
-                {{-- end sub menu --}}
-            </li>
-            {{-- <li class="nav-item">
+            </ul>
+            {{-- end sub menu --}}
+        </li>
+        {{-- <li class="nav-item">
                 <a class="nav-link " href="./pages/rtl.html">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -204,8 +202,14 @@
                     <span class="nav-link-text ms-1">Sign Up</span>
                 </a>
             </li> --}}
-        </ul>
-    </div>
+
+        <div class="ms-auto mt-4" style="display: flex;justify-content: center;">
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit" class="btn btn-danger  ">Log Out</button>
+            </form>
+        </div>
+    </ul>
 
     {{-- <div class="sidenav-footer mx-3 ">
         <div class="card card-plain shadow-none" id="sidenavCard">

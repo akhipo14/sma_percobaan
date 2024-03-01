@@ -1,5 +1,21 @@
 @extends('user.main')
 @section('content')
+    @include('sweetalert::alert')
+
+    <style>
+        .custom-input {
+            background-color: rgb(255, 255, 255);
+        }
+
+        .a-hover {
+            color: rgb(88, 88, 88);
+            transition: .3s;
+        }
+
+        .a-hover:hover {
+            color: rgb(62, 98, 244);
+        }
+    </style>
     <section id="hero">
         <div class="hero-container" data-aos="fade-up">
             <h2>SELAMAT DATANG DI</h2>
@@ -162,31 +178,70 @@
             </div>
             <div class="row mt-5">
                 <div class="col-lg-12 mt-5 mt-lg-0" data-aos="fade-left">
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    <form action="/sendmail" method="post" role="form">
+                        @csrf
+
                         <div class="row">
                             <div class="col-md-4 form-group">
-                                <input type="text" name="name" class="form-control rounded" id="name"
-                                    placeholder="Nama" required />
+                                <input type="text" name="name"
+                                    class="custom-input form-control rounded @error('name') is-invalid @enderror"
+                                    placeholder="Nama" value="{{ old('name') }}" />
+                                @error('name')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-md-4 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control rounded" name="email" id="email"
-                                    placeholder="Email" required />
+                                <input type="email"
+                                    class="custom-input form-control rounded @error('email') is-invalid @enderror"
+                                    name="email" placeholder="Email" value="{{ old('email') }}" />
+                                @error('email')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                             </div>
                             <div class="col-md-4 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control rounded" name="email" id="email"
-                                    placeholder="No. Telepon" required />
+                                <input type="number"
+                                    class="custom-input form-control rounded @error('phone') is-invalid @enderror"
+                                    name="phone" placeholder="No. Telepon" value="{{ old('phone') }}" />
+                                @error('phone')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+                            <div class="col-md-12 form-group mt-3">
+                                <input type="text"
+                                    class="custom-input form-control rounded @error('subject') is-invalid @enderror"
+                                    name="subject" placeholder="Subject" value="{{ old('subject') }}" />
+                                @error('subject')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 form-group mt-3">
+                                <textarea class="custom-input form-control rounded @error('body') is-invalid @enderror" name="body" rows="5"
+                                    placeholder="Message">{{ old('body') }}</textarea>
+                                @error('body')
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                            </div>
+                            <button class="col-md-12 mt-3 btn btn-primary" type="submit">Kirim</button>
+
                         </div>
 
-                        <div class="form-group mt-3">
-                            <textarea class="form-control rounded" name="message" rows="5" placeholder="Message" required></textarea>
-                        </div>
-                        <div class="my-3">
+                        {{-- <div class="my-3">
                             <div class="loading">Loading</div>
                             <div class="error-message"></div>
                             <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center"><button type="submit">Kirim</button></div>
+                        </div> --}}
                     </form>
                 </div>
             </div>

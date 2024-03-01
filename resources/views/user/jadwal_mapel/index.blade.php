@@ -1,5 +1,51 @@
 @extends('user.main')
 @section('content')
+    <style>
+        .nowrap-th th {
+            white-space: nowrap;
+        }
+
+        .nowrap-td td {
+            white-space: nowrap;
+        }
+
+        #customers {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .th-1 {
+            border-radius: 8px 0px 0px 0px;
+
+        }
+
+        .th-2 {
+            border-radius: 0px 8px 0px 0px;
+
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding: 12px 25px 12px 25px;
+            text-align: center;
+            background-color: rgb(44, 87, 245);
+            color: white;
+            border: none;
+        }
+    </style>
     <main id="main">
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="breadcrumb-hero">
@@ -14,116 +60,101 @@
         </section>
         <!-- End Breadcrumbs -->
         <section id="services" class="services">
-            <div class="container mt-5" data-aos="fade-in">
-                <div class="table-responsive border rounded " style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-                    {{-- <table class=" table  table-striped">
-                        <thead class=" table-primary" style="">
-                            <tr>
-                                <th style="background-color: rgb(62, 98, 244);" class="text-white px-3 py-3 col-1">no</th>
-                                <th style="background-color: rgb(62, 98, 244)" class="text-white px-3 py-3 col-3">Jam
-                                    Pelajaran</th>
-                                @foreach ($kelas as $item)
-                                    <th style="background-color: rgb(62, 98, 244)" class="text-white px-3 py-3 col-3">
-                                        {{ $item->nama_kelas }}
-                                    </th>
-                                @endforeach
-
-                            </tr>
-                        </thead>
-                        <tbody style="">
-
-                            @foreach ($jadwals as $jadwal)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>halow</td>
-                                    <td>{{ $jadwal->kelas->nama_kelas }}</td>
-                                </tr>
-                            @endforeach
-                            @if ($jadwals->isNotEmpty())
-                                @foreach ($jadwals as $item)
-                                    <tr>
-                                        <td class="px-3  py-2">
-                                            {{ $loop->iteration }}</td>
-                                        <td class="px-3 py-2">{{ $item->detail_prestasi }}</td>
-                                        <td class="px-3 py-2">{{ $item->nama }}</td>
-                                        <td class="px-3 py-2">{{ $item->tingkat }}</td>
-                                        <td class="px-3 py-2">{{ $item->tahun }}</td>
-
-                                    </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="6" class="text-center">Data Kosong</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table> --}}
-                    <div class="card p-3 mb-5">
-                        <div class="table-responsive">
-                            <table class="table bg-white text-center">
-                                <thead>
-                                    <tr>
-                                        <th class="border-bottom">Hari</th>
-                                        @foreach ($jadwals_kelas as $kelasItem)
-                                            <th class="border-bottom">{{ $kelasItem->nama_kelas }}</th>
-                                        @endforeach
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($jadwals_by_kelas as $kelasItem => $jadwals)
-                                        {{-- Loop through each jadwal for the current kelas --}}
-                                        @foreach ($jadwals as $jadwal)
-                                            <tr>
-                                                <td>{{ $hari2->nama_hari }}</td>
-                                                @foreach ($jadwals_kelas as $kelas)
-                                                    <td>
-                                                        {{-- Check if the jadwal belongs to the current kelas --}}
-                                                        @if ($jadwal->kelas_id == $kelas->id)
-                                                            {{-- Display pelajaran_id --}}
-                                                            {{ $jadwal->pelajaran_id }}
-                                                        @endif
-                                                    </td>
-                                                @endforeach
-                                            </tr>
-                                        @endforeach
+            <div class="container mt-3" data-aos="fade-in">
+                <div class="row d-flex justify-content-end">
+                    <div class="col-12 d-flex justify-content-end">
+                        <div class="col-3 d-flex justify-content-end me-3">
+                            <p for="selekuy" class="mt-2 text-secondary" style="font-family: 'Inter-boldd'">Tampilkan
+                                berdasarkan kelas</p>
+                        </div>
+                        <div class="col-1">
+                            <form action="/jadwal_kelas" method="get">
+                                <select class="form-select   border-primary"
+                                    style="background-color: white; padding:8px 30px;" aria-label="Default select example"
+                                    name="kelas" onchange="this.form.submit()">
+                                    @foreach ($kelas as $item)
+                                        <option value="{{ $item->id }}"
+                                            {{ request()->input('kelas') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->nama_kelas }}
+                                        </option>
                                     @endforeach
-                                </tbody>
-                            </table>
+                                </select>
+                            </form>
                         </div>
                     </div>
-
-
-
-                    {{-- <div class="total" style="float: left;margin-left: 20px;margin-top: auto;margin-bottom: auto;">
-                        <p>
-                            <span class="text-secondary fs-6">Total Prestasi : {{ $total_prestasis }}</span>
-                        </p>
-                    </div> --}}
-                    {{-- <div class="style_paginator " style="float: right;margin-right: 20px ">
-                        {{ $jadwals->links() }}
-                    </div> --}}
-                    {{-- @foreach ($kelas as $kelasitem)
-                        <h2>Kelas {{ $kelasitem->nama }}</h2>
-                        <table>
+                </div>
+                {{-- <div class="card p-3 mb-5">
+                    <div class="table-responsive">
+                        <table class="table bg-white text-center">
                             <thead>
                                 <tr>
-                                    <th>Jam</th>
-                                    <th>Mata Pelajaran</th>
-                                    <!-- Tambahkan kolom lain yang diperlukan -->
+                                    <th class="border-bottom">Hari</th>
+                                    <th class="  border-buttom">07.30 - 07.30</th>
+                                    <th class="  border-buttom">07.30 - 08.05</th>
+                                    <th class="  border-buttom">08.05 - 08.40</th>
+                                    <th class="  border-buttom">08.40 - 09.15</th>
+                                    <th class="  border-buttom">09.15 - 09.50</th>
+                                    <th class="  border-buttom">09.50 - 10.10</th>
+                                    <th class="  border-buttom">10.10 - 10.45</th>
+                                    <th class="  border-buttom">10.45 - 11.20</th>
+                                    <th class="  border-buttom">11.20 - 11.55</th>
+                                    <th class="  border-buttom">11.55 - 13.00</th>
+                                    <th class="  border-buttom">13.00 - 13.35</th>
+                                    <th class="  border-buttom">13.35 - 14.00</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($jadwals_by_kelas[$kelasitem->id] as $jadwal)
-                                    <tr>
-                                        <!-- Menggunakan indeks array $jam untuk mendapatkan waktu sesuai dengan jam_id -->
-                                        <td>{{ $jadwal->pelajaran_id }}</td>
-                                        <!-- Tambahkan kolom lain yang diperlukan -->
-                                    </tr>
-                                @endforeach
+
                             </tbody>
                         </table>
-                    @endforeach --}}
+                    </div>
+                </div> --}}
+                <div class="card mt-3 mb-3">
 
+                    <div class="table-responsive">
+                        <table class="table bg-white  text-center" id="customers">
+                            <thead>
+                                <tr class="nowrap-th rounded">
+                                    <th class=" th-1 ">Hari</th>
+                                    <th>Kelas</th>
+                                    <th class=" ">07.30 - 07.30</th>
+                                    <th class=" ">07.30 - 08.05</th>
+                                    <th class=" ">08.05 - 08.40</th>
+                                    <th class=" ">08.40 - 09.15</th>
+                                    <th class=" ">09.15 - 09.50</th>
+                                    <th class=" ">09.50 - 10.10</th>
+                                    <th class=" ">10.10 - 10.45</th>
+                                    <th class=" ">10.45 - 11.20</th>
+                                    <th class=" ">11.20 - 11.55</th>
+                                    <th class=" ">11.55 - 13.00</th>
+                                    <th class=" ">13.00 - 13.35</th>
+                                    <th class="th-2 ">13.35 - 14.00</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    @foreach ($jadwals_hari as $hariItem)
+                                <tr class="nowrap-td">
+
+                                    <td class="" style="font-weight: bold;text-align: inherit">
+                                        {{ $hariItem->nama_hari }}</td>
+                                    @if (isset($jadwals_by_hari[$hariItem->id]) && count($jadwals_by_hari[$hariItem->id]) > 0)
+                                        <td>{{ $kelas2->nama_kelas }}</td>
+                                        @foreach ($jadwals_by_hari[$hariItem->id] as $jadwal)
+                                            <td>{{ $jadwal->pelajaran_id ? $jadwal->pelajaran->nama_pelajaran : '-' }}
+                                            </td>
+                                        @endforeach
+                                    @else
+                                        <td>Tidak ada jadwal untuk hari ini.</td>
+                                    @endif
+
+
+                                </tr>
+                                @endforeach
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>

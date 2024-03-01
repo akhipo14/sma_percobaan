@@ -41,27 +41,26 @@ class JadwalController extends Controller
         //     '09.15 - 09.50','09.50 - 10.10','10.10 - 10.45','10.45 - 11.20',
         //     '11.20 - 11.55','11.55 - 13.00','13.00 - 13.35','13.35 - 14.00',
         // ];
-        public function jadwaluser(Request $request){
-            $hariId = $request->input('hari');
-            $hari2 = $hariId ? Hari::find($hariId) : Hari::first();
+    public function jadwaluser(Request $request){
+            $kelasId = $request->input('kelas');
+            $kelas2 = $kelasId ? Kelas::find($kelasId) : Kelas::first();
+            $hari = Hari::all();
             $kelas = Kelas::all();
             $pelajarans = Pelajaran::all();
-                
-            // Inisialisasi array kosong untuk menampung data jadwal berdasarkan kelas
-            $jadwals_by_kelas = [];
-            // Ambil semua kelas yang tersedia
-            $jadwals_kelas = Kelas::all();
-
-            // Iterasi melalui setiap kelas untuk mengambil data jadwal berdasarkan kelas_id dan hari_id
-            foreach ($kelas as $kelasItem) {
-                // Ambil jadwal berdasarkan kelas_id dan hari_id saat ini
-                $jadwals = Jadwal::where('kelas_id', $kelasItem->id)->where('hari_id', $hari2->id)->get();
-                // Masukkan ke dalam array $jadwals_by_kelas dengan kelas_id sebagai kunci
-                $jadwals_by_kelas[$kelasItem->id] = $jadwals;
-            }
-        
-            return view('user.jadwal_mapel.index', compact('jadwals_kelas','jadwals_by_kelas','pelajarans','hari2'));
+            // Ambil semua hari yang tersedia
+            $jadwals_hari = Hari::all();
+            // Inisialisasi array kosong untuk menampung data jadwal berdasarkan hari
+            $jadwals_by_hari = [];
+            // Iterasi melalui setiap hari untuk mengambil data jadwal berdasarkan hari_id
+            foreach ($hari as $hariItem) {
+            // Ambil jadwal berdasarkan hari_id saat ini
+            $jadwals = Jadwal::where('hari_id', $hariItem->id)->where('kelas_id', $kelas2->id)->get();
+            // Masukkan ke dalam array $jadwals_by_hari
+            $jadwals_by_hari[$hariItem->id] = $jadwals;
         }
+            return view('user.jadwal_mapel.index', compact('kelas', 'jadwals_by_hari','pelajarans','jadwals_hari','kelas2'));
+    }
+        
                 
     /**
      * Show the form for creating a new resource.
