@@ -28,7 +28,7 @@
     <main id="main">
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
-            <div class="container">
+            <div class="container " style="width: 90%;">
                 <div class="row justify-content-center">
                     <div class="col-lg-11">
                         <div class="row justify-content-center">
@@ -155,9 +155,9 @@
                 <div class="clients-slider swiper">
                     <div class="swiper-wrapper align-items-center ">
                         @foreach ($gallerys as $item)
-                            <div class="swiper-slide " style="margin: 100px">
-                                <img src="{{ asset('storage/' . $item->gambar) }}" style="width: 320px;height: 250px;"
-                                    class="rounded " />
+                            <div class="swiper-slide " style="margin: 20vh;">
+                                <img src="{{ asset('storage/' . $item->gambar) }}"
+                                    style="min-width: 200px;min-height:80px;width: 320px;height: 250px;" class="rounded " />
                             </div>
                         @endforeach
                     </div>
@@ -176,8 +176,8 @@
             <div class="section-title pt-5" data-aos="fade-up">
                 <h2>Kotak Saran</h2>
             </div>
-            <div class="row mt-5">
-                <div class="col-lg-12 mt-5 mt-lg-0" data-aos="fade-left">
+            <div class="row mt-2">
+                <div class="col-lg-12 mt-2 mt-lg-0" data-aos="fade-left">
                     <form action="/sendmail" method="post" role="form">
                         @csrf
 
@@ -233,8 +233,10 @@
                                 @enderror
 
                             </div>
-                            <button class="col-md-12 mt-3 btn btn-primary" type="submit">Kirim</button>
-
+                            <div class="col-md-12 form-group mt-3">
+                                <button class=" btn btn-primary w-100" style=" margin:auto;"
+                                    type="submit">Kirim</button>
+                            </div>
                         </div>
 
                         {{-- <div class="my-3">

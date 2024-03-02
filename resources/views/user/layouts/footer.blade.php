@@ -10,24 +10,25 @@
                            Terakreditasi “A”
                        </p>
                        <div class="social-links" style="margin-top: 10px">
-                           <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                           <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                           <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+                           <a href="#" class="facebook border border-white  "><i class="bi bi-facebook"></i></a>
+                           <a href="#" class="instagram  border border-white "><i class="bi bi-instagram"></i></a>
+                           <a href="#" class="youtube  border border-white "><i class="bi bi-youtube"></i></a>
                        </div>
                    </div>
 
                    <div class="col-lg-4 col-md-6 footer-contact">
                        <h4>Kontak Kami</h4>
                        <p>
-                           <strong><i class="bi bi-phone"></i></strong> Jl. Ujung Gurun No. 56 Padang <br />
-                           <strong><i class="bi bi-phone"></i></strong> 0751-841743<br />
-                           <strong><i class="bi bi-phone"></i></strong> sdp_pdg@yahoo.co.id<br />
+                           <strong><i class="fa-solid fa-location-dot"></i></strong> Jl. Ujung Gurun No. 56 Padang
+                           <br />
+                           <strong><i class="fa-solid fa-phone"></i></strong> 0751-841743<br />
+                           <strong><i class="fa-solid fa-envelope"></i></strong> sdp_pdg@yahoo.co.id<br />
                        </p>
                    </div>
 
                    <div class="col-lg-4 col-md-6 footer-newsletter">
                        <h4>Temukan kami di Google Maps</h4>
-                       <iframe
+                       <iframe class="rounded w-100"
                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15957.152430004868!2d100.3602586!3d-0.9340949!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b92edd64a0df%3A0xe8b31670ed500206!2sSekolah%20Dasar%20Negeri%20Percobaan%20Padang!5e0!3m2!1sid!2sid!4v1708318882821!5m2!1sid!2sid"
                            style="border: 0" allowfullscreen="" loading="lazy"
                            referrerpolicy="no-referrer-when-downgrade"></iframe>

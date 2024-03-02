@@ -50,7 +50,7 @@
                     @foreach ($classrooms as $item)
                         <div class="col-md-4 mt-3 d-flex justify-content-center">
                             <div class="card p-0 mt-3 "
-                                style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;;width:21rem ;border:none">
+                                style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;;width:21rem ;border:none">
                                 <div class="card-body text-white"
                                     style="border-radius: 6px 6px 0px 0px ;background-color:rgb(62, 98, 244)">
                                     <div class="row d-flex justify-content-between ">

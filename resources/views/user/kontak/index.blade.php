@@ -4,7 +4,7 @@
 
     <style>
         .custom-input {
-            background-color: rgb(245, 245, 245);
+            background-color: rgb(255, 255, 255);
         }
 
         .a-hover {
@@ -101,8 +101,9 @@
                                     @enderror
 
                                 </div>
-                                <button class="col-md-12 mt-3 btn btn-primary" type="submit">Kirim</button>
-
+                                <div class="col-md-12 form-group mt-3">
+                                    <button class=" btn btn-primary w-100" type="submit">Kirim</button>
+                                </div>
                             </div>
 
                             {{-- <div class="my-3">
