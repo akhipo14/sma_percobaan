@@ -1,10 +1,10 @@
 @extends('admin.main')
 @section('content')
     @include('sweetalert::alert')
-
-    <button href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahmodal">Tambah
+    <h3 class="text-primary">Manage Ruang</h3>
+    <button href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahmodal">Tambah
         Bangun Ruang</button>
-    <input type="text" class="form-control" id="tahunInput" placeholder="Tahun">
+    {{-- <input type="text" class="form-control" id="tahunInput" placeholder="Tahun"> --}}
     <div class="card p-2 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
         <div class="table-responsive">
             <div class=" table-striped table-hover ">
