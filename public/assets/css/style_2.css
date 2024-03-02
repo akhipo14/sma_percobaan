@@ -1,0 +1,17 @@
+.responsive-image{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+.responsive-image-fasilitas{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+.posisi-foto-blog{
+    width: 100%; 
+    object-fit:cover;
+    object-position: 50% 50%;
+}
+
+

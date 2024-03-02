@@ -1,6 +1,8 @@
 @extends('admin.main')
 @section('content')
-    <h3 class="text-primary mb-3">Welcome Admin !</h3>
+    @include('sweetalert::alert')
+    <h3 class="text-primary mb-3">Welcome {{ auth()->user()->name }} !</h3>
+
     <div class="row ">
         <div class="col">
             <div class="card">

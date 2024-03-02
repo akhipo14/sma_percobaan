@@ -53,7 +53,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'judul'=> 'required|max:100|string|unique:posts',
             'kategori_id' => 'required',
-            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body'=> 'required',
             'slug' => ''
         ],$customMessages);

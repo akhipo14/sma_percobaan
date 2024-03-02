@@ -36,9 +36,32 @@ class JadwalController extends Controller
         
         return view('admin.jadwal.index', compact('kelas', 'jadwals_by_hari','pelajarans','jadwals_hari','kelas2'));
     }
-    
-
-
+        // $jam = [
+        //     '07.00 - 07.30','07.30 - 08.05','08.05 - 08.40','08.40 - 09.15',
+        //     '09.15 - 09.50','09.50 - 10.10','10.10 - 10.45','10.45 - 11.20',
+        //     '11.20 - 11.55','11.55 - 13.00','13.00 - 13.35','13.35 - 14.00',
+        // ];
+    public function jadwaluser(Request $request){
+            $kelasId = $request->input('kelas');
+            $kelas2 = $kelasId ? Kelas::find($kelasId) : Kelas::first();
+            $hari = Hari::all();
+            $kelas = Kelas::all();
+            $pelajarans = Pelajaran::all();
+            // Ambil semua hari yang tersedia
+            $jadwals_hari = Hari::all();
+            // Inisialisasi array kosong untuk menampung data jadwal berdasarkan hari
+            $jadwals_by_hari = [];
+            // Iterasi melalui setiap hari untuk mengambil data jadwal berdasarkan hari_id
+            foreach ($hari as $hariItem) {
+            // Ambil jadwal berdasarkan hari_id saat ini
+            $jadwals = Jadwal::where('hari_id', $hariItem->id)->where('kelas_id', $kelas2->id)->get();
+            // Masukkan ke dalam array $jadwals_by_hari
+            $jadwals_by_hari[$hariItem->id] = $jadwals;
+        }
+            return view('user.jadwal_mapel.index', compact('kelas', 'jadwals_by_hari','pelajarans','jadwals_hari','kelas2'));
+    }
+        
+                
     /**
      * Show the form for creating a new resource.
      */

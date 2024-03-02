@@ -18,7 +18,7 @@ class RuangController extends Controller
         $text = "Anda yakin ingin menghapus data ?";
         confirmDelete($title, $text);
         return view('admin.ruang.index',[
-            'ruangs'=>Ruang::all()
+            'ruangs'=>Ruang::latest()->paginate()
         ]);
     }
 
@@ -27,7 +27,7 @@ class RuangController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.ruang.add');
     }
 
     /**
@@ -35,31 +35,34 @@ class RuangController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
-            'jenis_ruang'=>'required|string|max:50|unique:ruangs',
-            'kondisi'=>'required',
-            'jumlah'=>'required|integer'
-        ];
-
         $customMessages = [
             'jenis_ruang.required' => 'Kolom jenis ruang harus diisi',
             'jenis_ruang.max' => 'Tidak boleh lebih dari 15 karakter',
             'jenis_ruang.unique' => 'kolom Jenis ruang sudah tersedia',
             'jumlah.required' => 'Kolom jumlah harus diisi',
-            'jumlah.integer' => 'Kolom jumlah harus berupa angka'
+            'jumlah.integer' => 'Kolom jumlah harus berupa angka',
+            'image.required' =>'image tidak boleh kosong',
+            'image.max:2048' =>'Ukuran image maksimal 2mb',
+            'image.image' =>'image Harus berupa image',
+            'image.mimes' =>'Format image jpeg,png,jpg,gif,svg',
+
             // Tambahkan pesan kustom lainnya sesuai kebutuhan
         ];
-        $validatedData= Validator::make($request->all(),$rules,$customMessages);
-        if($validatedData->fails()){
-            $errors = $validatedData->errors()->all();
-            $errorMessage = 'Tambah data gagal:<br>' . implode('<br>', $errors);
-            Alert::toast($errorMessage,'error');
-            return redirect('/admin-ruang')
-                ->withErrors($validatedData);
-            }
 
-        $validatedData2 = $validatedData->validated();
-        Ruang::create($validatedData2);
+        $validatedData = $request->validate( [
+            'jenis_ruang'=>'required|string|max:50|unique:ruangs',
+            'kondisi'=>'required',
+            'jumlah'=>'required|integer',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ],$customMessages);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('ruang','public');
+        }
+    
+       
+       
+        Ruang::create($validatedData);
         toast('Tambah data Berhasil', 'success');
         return redirect('/admin-ruang')->with('success','Tambah data Berhasil');
     }
@@ -75,9 +78,11 @@ class RuangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ruang $ruang)
+    public function edit($id)
     {
-        //
+        return view('admin.ruang.edit',[
+            'ruangs'=>Ruang::find($id)
+        ]);
     }
 
     /**
@@ -85,31 +90,32 @@ class RuangController extends Controller
      */
     public function update(Request $request, Ruang $ruang)
     {
-        $rules = [
-            'jenis_ruang'=>'required|string|max:50|unique:ruangs,jenis_ruang,' . $ruang->id ,
-            'kondisi'=>'required',
-            'jumlah'=>'required|integer'
-        ];
-
         $customMessages = [
             'jenis_ruang.required' => 'Kolom jenis ruang harus diisi',
             'jenis_ruang.max' => 'Tidak boleh lebih dari 15 karakter',
             'jenis_ruang.unique' => 'kolom Jenis ruang sudah tersedia',
             'jumlah.required' => 'Kolom jumlah harus diisi',
-            'jumlah.integer' => 'Kolom jumlah harus berupa angka'
+            'jumlah.integer' => 'Kolom jumlah harus berupa angka',
+            'image.required' =>'image tidak boleh kosong',
+            'image.max:2048' =>'Ukuran image maksimal 2mb',
+            'image.image' =>'image Harus berupa image',
+            'image.mimes' =>'Format image jpeg,png,jpg,gif,svg',
+
             // Tambahkan pesan kustom lainnya sesuai kebutuhan
         ];
-        $validatedData= Validator::make($request->all(),$rules,$customMessages);
-        if($validatedData->fails()){
-            $errors = $validatedData->errors()->all();
-            $errorMessage = 'Edit data gagal:<br>' . implode('<br>', $errors);
-            Alert::toast($errorMessage,'error');
-            return redirect('/admin-ruang')
-                ->withErrors($validatedData);
-            }
 
-        $validatedData2 = $validatedData->validated();
-        $ruang->update($validatedData2);
+        $validatedData = $request->validate( [
+            'jenis_ruang'=>'required|string|max:50|unique:ruangs,jenis_ruang,' . $ruang->id,
+            'kondisi'=>'required',
+            'jumlah'=>'required|integer',
+            'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ],$customMessages);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('ruang','public');
+        }
+       
+        $ruang->update($validatedData);
         toast('Edit data Berhasil', 'success');
         return redirect('/admin-ruang')->with('success','Edit data Berhasil');
     }

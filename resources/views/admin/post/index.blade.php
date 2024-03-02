@@ -4,60 +4,57 @@
 
     <h3 class="text-primary">Manage Post</h3>
 
-    <div class="table-responsive">
-        <div class="card p-3 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-            <div class=" table-striped table-hover ">
-                <table class=" table bg-white rounded  ">
-                    <thead>
-                        <tr>
-                            <th class="px-2 py-1 col-1">no</th>
-                            <th class="px-2 py-1 col-3">Judul Portofolio</th>
-                            <th class="px-2 py-1 col-3">Kategori</th>
-                            <th class="px-2 py-1 col-1 text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody style="">
-                        @if ($posts->isNotEmpty())
-                            @foreach ($posts as $item)
-                                <tr>
-                                    <td class="px-2  pb-0">
-                                        {{ $loop->iteration }}</td>
-                                    <td class="px-2 pb-0">{{ $item->judul }}</td>
-                                    <td class="px-2 pb-0">{{ $item->kategori->nama_kategori }}</td>
-                                    <td class="px-2 pb-0">
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#showmodal{{ $item->id }}"
-                                                href="/admin-post/{{ $item->id }}/show"><i
-                                                    class="fa-solid fa-eye"></i></button>
-
-                                            <a class="btn btn-primary btn-sm" href="/admin-post/{{ $item->id }}/edit"><i
-                                                    class="fa-solid fa-pen-to-square"></i></a>
-
-                                            <form action="/admin-post/{{ $item->id }} " method="post"
-                                                class="delete-form">
-                                                @method('delete')
-                                                @csrf
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
-                                                    class="btn btn-danger btn-sm ">
-                                                    <i class="fa-solid fa-trash confirm-button"></i></button>
-                                            </form>
-                                        </div>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
+    <div class="card p-3 ">
+        <div class="table-responsive">
+            <table class=" table bg-white   ">
+                <thead>
+                    <tr>
+                        <th class="px-2 py-1 col-1">no</th>
+                        <th class="px-2 py-1 col-3">Judul Portofolio</th>
+                        <th class="px-2 py-1 col-3">Kategori</th>
+                        <th class="px-2 py-1 col-1 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody style="">
+                    @if ($posts->isNotEmpty())
+                        @foreach ($posts as $item)
                             <tr>
-                                <td colspan="6" class="text-center">Data Kosong</td>
+                                <td class="px-2  pb-0">
+                                    {{ $loop->iteration }}</td>
+                                <td class="px-2 pb-0">{{ substr($item->judul, 0, 45) }}...</td>
+                                <td class="px-2 pb-0">{{ $item->kategori->nama_kategori }}</td>
+                                <td class="px-2 pb-0">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#showmodal{{ $item->id }}"
+                                            href="/admin-post/{{ $item->id }}/show"><i
+                                                class="fa-solid fa-eye"></i></button>
+
+                                        <a class="btn btn-primary btn-sm" href="/admin-post/{{ $item->id }}/edit"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
+
+                                        <form action="/admin-post/{{ $item->id }} " method="post" class="delete-form">
+                                            @method('delete')
+                                            @csrf
+                                            <input name="_method" type="hidden" value="DELETE">
+                                            <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
+                                                class="btn btn-danger btn-sm ">
+                                                <i class="fa-solid fa-trash confirm-button"></i></button>
+                                        </form>
+                                    </div>
+
+                                </td>
                             </tr>
-                        @endif
-                    </tbody>
-                </table>
-                <div class="style_paginator " style="float: right; ">
-                    {{ $posts->links() }}
-                </div>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="6" class="text-center">Data Kosong</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+            <div class="style_paginator " style="float: right; ">
+                {{ $posts->links() }}
             </div>
         </div>
     </div>

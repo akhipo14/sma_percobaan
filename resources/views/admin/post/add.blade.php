@@ -9,8 +9,7 @@
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="font-size: .8em">Judul</label>
                 <input type="text" name="judul" id="judul"
-                    class="form-control  @error('judul') is-invalid @enderror" value="{{ old('nama') }}"
-                    id="exampleFormControlInput1">
+                    class="form-control  @error('judul') is-invalid @enderror" value="{{ old('judul') }}">
                 @error('judul')
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                         {{ $message }}
@@ -19,8 +18,8 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="font-size: .8em">slug</label>
-                <input type="text" name="slug" id="slug" class="form-control" id="exampleFormControlInput1"
-                    disabled value="{{ old('slug') }}">
+                <input type="text" name="slug" id="slug" class="form-control" value="{{ old('slug') }}"
+                    readonly>
             </div>
             <div class="mb-3">
                 <label class="form-label " style="font-size: .8em">Kategori</label>
@@ -35,7 +34,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <img class="img-preview " style="max-width: 250px;max-height:250px;margin:0;">
+                <img class="img-preview rounded" style="max-width: 250px;max-height:250px;margin:0;">
                 <label class="form-label " style="font-size: .8em">Foto</label>
 
                 <input type="file" id="image" name="foto" accept="image/*"
@@ -48,46 +47,47 @@
             </div>
             <div class="mb-3">
                 <label class="form-label " style="font-size: .8em">Body</label>
-                <input class=" @error('body') is-invalid @enderror" id="body" type="hidden" name="body">
-                <trix-editor input="body"></trix-editor>
-                @error('body')
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        {{ $message }}
+                <input class=" @error('body') is-invalid @enderror" id="body" type="hidden" name="body"
+                    value="{{ old('body') }}">
+                <trix-editor input="body" "></trix-editor>
+                            @error('body')
+        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+    @enderror
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                        </div>
                     </div>
-                @enderror
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Tambah</button>
-            </div>
-        </div>
 
-    </form>
-    <script>
-        function slugifyjudul(judul) {
-            return judul.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
-        }
+                </form>
+                <script>
+                    function slugifyjudul(judul) {
+                        return judul.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
+                    }
 
-        document.getElementById('judul').addEventListener('input', function() {
-            var judul = this.value;
-            var slug = slugifyjudul(judul);
-            document.getElementById('slug').value = slug;
-        });
+                    document.getElementById('judul').addEventListener('input', function() {
+                        var judul = this.value;
+                        var slug = slugifyjudul(judul);
+                        document.getElementById('slug').value = slug;
+                    });
 
 
-        function previewImage() {
-            const image = document.querySelector('#image');
-            const imgPreview = document.querySelector('.img-preview');
+                    function previewImage() {
+                        const image = document.querySelector('#image');
+                        const imgPreview = document.querySelector('.img-preview');
 
-            imgPreview.style.display = 'block';
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
+                        imgPreview.style.display = 'block';
+                        const oFReader = new FileReader();
+                        oFReader.readAsDataURL(image.files[0]);
 
-            oFReader.onload = function(oFRevent) {
-                imgPreview.src = oFRevent.target.result;
-            }
-        }
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault()
-        });
-    </script>
+                        oFReader.onload = function(oFRevent) {
+                            imgPreview.src = oFRevent.target.result;
+                        }
+                    }
+                    document.addEventListener('trix-file-accept', function(e) {
+                        e.preventDefault()
+                    });
+                </script>
 @endsection

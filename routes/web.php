@@ -1,17 +1,27 @@
 <?php
 
+use App\Http\Controllers\AbsenSdmController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FasilitasController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KetenagaanController;
+use App\Http\Controllers\KontakController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\SDMController;
+use App\Http\Controllers\SDMUserController;
+use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 /*
@@ -25,19 +35,61 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.main');
-});
 
+
+
+// user
+Route::middleware(['guest'])->group (function(){
+Route::get('/',[UserController::class,'index']) ;
+Route::get('/sambutan', function () {
+    return view('user.sambutan.index');
+});
+Route::get('/visi-misi', function () {
+    return view('user.visimisi.index');
+});
+Route::get('/branding', function () {
+    return view('user.branding.index');
+});
+Route::get('/fasilitas',[FasilitasController::class,'index']);
+Route::get('/guru-dan-karyawan',[SDMUserController::class,'index']);
+Route::get('/berita',[BeritaController::class,'index']);
+Route::get('/berita/{post}',[UserController::class,'blog_single']);
+Route::get('/prestasi',[PrestasiController::class,'show']);
+Route::get('/kontak',[KontakController::class,'index']);
+Route::get('/jadwal_kelas',[JadwalController::class,'jadwaluser']);
+Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::post('/login',[LoginController::class,'authenticate']);
+Route::get('/register',[RegisterController::class,'index']);
+Route::post('/register',[RegisterController::class,'store']);
+Route::get('/absen-sdm',[AbsenSdmController::class,'create']);
+Route::post('/absen-sdm',[AbsenSdmController::class,'store']);
+Route::get('/forgot-password',[ForgotPasswordController::class,'index'])->name('forgot.password');
+Route::post('/forgot-password',[ForgotPasswordController::class,'store'])->name('forgot.password.post');
+Route::get('/reset-password/{token}',[ForgotPasswordController::class,'resetpassword'])->name('reset.password');
+Route::post('/reset-password',[ForgotPasswordController::class,'resetpasswordpost'])->name('reset.password.post');
+Route::get('/classroom',[ClassroomController::class,'indexuser']);
+Route::post('/sendmail',[SendMailController::class,'sendMail']);
 // dasboard
 // Route::get('/admin-dashboard', function () {
 //     return view('admin.dashboard');
 // });
+// Route::get('/notifabsen',[AbsenSdmController::class,'notifabsen']);
+});
 
+Route::fallback(function () {
+    return view('backoff'); // Anda dapat mengganti '/' dengan URL halaman lain yang ingin Anda tuju
+});
+
+Route::middleware(['auth'])->group (function(){
+// logout
+Route::post('/logout',[LoginController::class,'logout']);
 // dashboard
-
 Route::get('admin-dashboard',[DashboardController::class,'index']);
 
+// absen sdm
+Route::get('/admin-absen-sdm',[AbsenSdmController::class,'index'])->name('sdms.index');
+Route::get('/admin-absen-sdm/cetak_pdf/{inputDate}',[AbsenSdmController::class,'cetak_pdf']);
+Route::get('/admin-absen-sdm-show', [AbsenSdmController::class, 'show'])->name('absensdms.show');
 //ketenagaan
 Route::get('admin-ketenagaan',[KetenagaanController::class,'index']);
 Route::post('admin-ketenagaan',[KetenagaanController::class,'store']);
@@ -46,9 +98,13 @@ Route::delete('admin-ketenagaan/{id}',[KetenagaanController::class,'destroy']);
 
 // Ruang
 Route::get('admin-ruang',[RuangController::class,'index']);
-Route::post('admin-ruang',[RuangController::class,'store']);
+Route::post('admin-ruang/add',[RuangController::class,'store']);
+Route::get('/admin-ruang/add',[RuangController::class,'create']);
+Route::get('/admin-ruang/{id}/edit',[RuangController::class,'edit']);
 Route::put('admin-ruang/{ruang}',[RuangController::class,'update'])->name('ruangs.update');
 Route::delete('admin-ruang{id}',[RuangController::class,'destroy'])->name('ruangs.delete');
+
+
 //kategori
 Route::get('admin-kategori',[KategoriController::class,'index']);
 Route::get('/admin-kategori/slug',[KategoriController::class,'createslug']);
@@ -113,7 +169,7 @@ Route::get('/admin-classroom/add',[ClassroomController::class,'create']);
 Route::get('/admin-classroom/{id}/edit',[ClassroomController::class,'edit']);
 Route::put('/admin-classroom/{id}',[ClassroomController::class,'update']);
 Route::delete('/admin-classroom/{id}',[ClassroomController::class,'destroy']);
-
+});
 
 
 Route::get('/test', function () {

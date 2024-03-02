@@ -1,10 +1,10 @@
 @extends('admin.main')
 @section('content')
     @include('sweetalert::alert')
-    <h3 class="text-primary">Manage Ruang</h3>
-    <button href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahmodal">Tambah
-        Bangun Ruang</button>
-    {{-- <input type="text" class="form-control" id="tahunInput" placeholder="Tahun"> --}}
+
+    <h3 class="text-primary">Manage Prestasi</h3>
+    <a href="admin-ruang/add" class="btn btn-primary">Tambah
+        Bangun Ruang</a>
     <div class="card p-2 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
         <div class="table-responsive">
             <div class=" table-striped table-hover ">
@@ -39,13 +39,12 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td colspan="2">{{ $item->jenis_ruang }}</td>
                                     <td> {{ $item->jumlah }}</td>
-                                    <td> {{ str_replace('_', ' ', $item->kondisi) }}</td>
+                                    <td> {{ str_replace('-', ' ', $item->kondisi) }}</td>
                                     <td>
                                         <div class="d-flex justify-content-center gap-2">
 
-                                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal{{ $item->id }}"><i
-                                                    class="fa-solid fa-pen-to-square"></i></button>
+                                            <a class="btn btn-primary btn-sm" href="admin-ruang/{{ $item->id }}/edit"><i
+                                                    class="fa-solid fa-pen-to-square"></i></a>
 
 
                                             <a href="{{ Route('ruangs.delete', $item->id) }}" data-confirm-delete="true"
@@ -64,135 +63,13 @@
 
                     </tbody>
                 </table>
-                {{-- <div class="style_paginator " style="float: right; ">
+                <div class="style_paginator " style="float: right; ">
                     {{ $ruangs->links() }}
-                </div> --}}
-            </div>
-        </div>
-    </div>
-
-    {{-- update ruang --}}
-    @foreach ($ruangs as $item)
-        <div class="modal fade" id="editmodal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Kategori</h1>
-
-                        <i class="fa-solid fa-xmark" data-bs-dismiss="modal" aria-label="Close" style="cursor: pointer"></i>
-                    </div>
-                    <form action="{{ route('ruangs.update', $item) }}" method="post">
-                        @method('put')
-                        @csrf
-                        <div class="modal-body">
-                            <div class="mb-2">
-                                <label class="form-label " style="font-size: .8em">Jenis Ruang</label>
-                                <input type="text" name="jenis_ruang"
-                                    class="form-control @error('jenis_ruang') is-invalid @enderror"
-                                    placeholder="Labor Komputer" value="{{ $item->jenis_ruang }}">
-                                @error('jenis_ruang')
-                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="mb-2">
-                                <label class="form-label " style="font-size: .8em">Jumlah</label>
-                                <input type="number" name="jumlah"
-                                    class="form-control @error('jumlah') is-invalid @enderror" placeholder="Labor Komputer"
-                                    value="{{ $item->jumlah }}">
-                                @error('jumlah')
-                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label " style="font-size: .8em">Kategori</label>
-                                <select class="form-select " aria-label="Default select example" name="kondisi">
-                                    @if ($item->kondisi == 'baik')
-                                        <option value="baik" selected>Baik</option>
-                                        <option value="rusak_ringan">Rusak Ringan</option>
-                                        <option value="rusak_berat">Rusak Berat</option>
-                                    @else
-                                        @if ($item->kondisi == 'rusak_ringan')
-                                            <option value="rusak_ringan" selected>Rusak Ringan</option>
-                                            <option value="baik">Baik</option>
-                                            <option value="rusak_berat">Rusak Berat</option>
-                                        @else
-                                            <option value="rusak_berat" selected>Rusak Berat</option>
-                                            <option value="baik">Baik</option>
-                                            <option value="rusak_ringan">Rusak Ringan</option>
-                                        @endif
-                                    @endif
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-primary">Edit</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
-    @endforeach
-
-    {{-- end update ruang --}}
-
-    {{-- create ruang --}}
-    <div class="modal fade" id="tambahmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Bangun Ruang</h1>
-
-                    <i class="fa-solid fa-xmark" data-bs-dismiss="modal" aria-label="Close" style="cursor: pointer"></i>
-                </div>
-                <form action="/admin-ruang" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-2">
-                            <label class="form-label " style="font-size: .8em">Jenis Ruang</label>
-                            <input type="text" name="jenis_ruang"
-                                class="form-control @error('jenis_ruang') is-invalid @enderror"
-                                placeholder="Labor Komputer">
-                            @error('jenis_ruang')
-                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label " style="font-size: .8em">Jumlah</label>
-                            <input type="number" name="jumlah"
-                                class="form-control @error('jumlah') is-invalid @enderror" placeholder="Labor Komputer">
-                            @error('jumlah')
-                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <label class="form-label " style="font-size: .8em">Kondisi</label>
-                        <select class="form-select" aria-label="Default select example" name="kondisi">
-                            <option value="baik">Baik</option>
-                            <option value="rusak_ringan">Rusak Ringan</option>
-                            <option value="rusak_berat">Rusak Berat</option>
-                        </select>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn btn-primary">Tambah Ruang</button>
-                    </div>
-            </div>
-
-            </form>
-        </div>
     </div>
-    </div>
-    {{-- end create ruang --}}
+
 
     <script>
         var input = document.getElementById('tahunInput');

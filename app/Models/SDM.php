@@ -9,4 +9,6 @@ class SDM extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+
 }
