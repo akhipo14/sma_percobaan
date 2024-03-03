@@ -32,7 +32,7 @@
 
                                         <a class="btn btn-primary btn-sm" href="/admin-post/{{ $item->id }}/edit"><i
                                                 class="fa-solid fa-pen-to-square"></i></a>
-
+                                        {{-- 
                                         <form action="/admin-post/{{ $item->id }} " method="post" class="delete-form">
                                             @method('delete')
                                             @csrf
@@ -40,7 +40,10 @@
                                             <button type="submit" onclick="return confirm('yakin mau hapus data ?')"
                                                 class="btn btn-danger btn-sm ">
                                                 <i class="fa-solid fa-trash confirm-button"></i></button>
-                                        </form>
+                                        </form> --}}
+                                        <a type="submit" href="/admin-post/{{ $item->id }}" data-confirm-delete="true"
+                                            class="btn btn-danger btn-sm"><i
+                                                class="fa-solid fa-trash confirm-button"></i></a>
                                     </div>
 
                                 </td>
@@ -71,7 +74,7 @@
                     <div class="modal-body">
                         <div class="mb-2 ">
                             <img class="img-preview rounded mx-auto d-block"
-                                style="max-width: 450px;max-height:350px;margin:0;"
+                                style="max-width: 300px;max-height:350px;margin:0;"
                                 src="{{ asset('storage/' . $item->foto) }}">
                         </div>
                         <div class="mb-2">

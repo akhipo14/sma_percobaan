@@ -3,7 +3,7 @@
     <main id="main">
         <!-- ======= Work Process Section ======= -->
         <section id="work-process" class="work-process">
-            <div class="container mt-5">
+            <div class="container mt-3 p-4">
                 <div class="row content">
                     <div class="col-md-5" data-aos="fade-right">
                         <img src="assets/img/sambutan.png" class="img-fluid" alt="" />

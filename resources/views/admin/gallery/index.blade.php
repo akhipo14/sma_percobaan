@@ -54,7 +54,7 @@
                 </table>
             </div>
         </div>
-        <div class="style_paginator " style="float: right; ">
+        <div class="style_paginator " style="float: right;margin-left:auto ">
             {{ $gallerys->links() }}
         </div>
     </div>

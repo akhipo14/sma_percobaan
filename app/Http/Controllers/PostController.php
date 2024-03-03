@@ -15,7 +15,10 @@ class PostController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {        $title = 'Hapus Data!';
+        $text = "Anda yakin ingin menghapus data ?";
+        confirmDelete($title, $text);
+
         return view('admin.post.index',[
             'posts'=>Post::latest()->paginate(5)
         ]);
