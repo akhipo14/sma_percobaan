@@ -18,8 +18,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+    <link rel="shorcut icon" type="image/img" href="{{ asset('assets/img/logo2.jpeg') }}">
     <script src="https://kit.fontawesome.com/82ebf8392e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/trix.css') }}">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
@@ -31,7 +30,7 @@
         }
     </style>
     <title>
-        Argon Dashboard 2 by Creative Tim
+        SDN Percobaan
     </title>
     @include('admin.partials.link')
 </head>

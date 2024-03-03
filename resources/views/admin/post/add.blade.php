@@ -5,7 +5,7 @@
     <h3 class="text-primary">Tambah Postingan Baru</h3>
     <form action="/admin-add-post" enctype="multipart/form-data" method="post">
         @csrf
-        <div class="card p-3 mb-2 me-4" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="card p-3 mb-2 me-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="font-size: .8em">Judul</label>
                 <input type="text" name="judul" id="judul"
@@ -50,44 +50,44 @@
                 <input class=" @error('body') is-invalid @enderror" id="body" type="hidden" name="body"
                     value="{{ old('body') }}">
                 <trix-editor input="body" "></trix-editor>
-                            @error('body')
+                                    @error('body')
         <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
+                                                                {{ $message }}
+                                                            </div>
     @enderror
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary">Tambah</button>
-                        </div>
-                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                </div>
+                            </div>
 
-                </form>
-                <script>
-                    function slugifyjudul(judul) {
-                        return judul.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
-                    }
+                        </form>
+                        <script>
+                            function slugifyjudul(judul) {
+                                return judul.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
+                            }
 
-                    document.getElementById('judul').addEventListener('input', function() {
-                        var judul = this.value;
-                        var slug = slugifyjudul(judul);
-                        document.getElementById('slug').value = slug;
-                    });
+                            document.getElementById('judul').addEventListener('input', function() {
+                                var judul = this.value;
+                                var slug = slugifyjudul(judul);
+                                document.getElementById('slug').value = slug;
+                            });
 
 
-                    function previewImage() {
-                        const image = document.querySelector('#image');
-                        const imgPreview = document.querySelector('.img-preview');
+                            function previewImage() {
+                                const image = document.querySelector('#image');
+                                const imgPreview = document.querySelector('.img-preview');
 
-                        imgPreview.style.display = 'block';
-                        const oFReader = new FileReader();
-                        oFReader.readAsDataURL(image.files[0]);
+                                imgPreview.style.display = 'block';
+                                const oFReader = new FileReader();
+                                oFReader.readAsDataURL(image.files[0]);
 
-                        oFReader.onload = function(oFRevent) {
-                            imgPreview.src = oFRevent.target.result;
-                        }
-                    }
-                    document.addEventListener('trix-file-accept', function(e) {
-                        e.preventDefault()
-                    });
-                </script>
+                                oFReader.onload = function(oFRevent) {
+                                    imgPreview.src = oFRevent.target.result;
+                                }
+                            }
+                            document.addEventListener('trix-file-accept', function(e) {
+                                e.preventDefault()
+                            });
+                        </script>
 @endsection

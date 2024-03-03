@@ -53,9 +53,9 @@
                     @endif
                 </tbody>
             </table>
-            <div class="style_paginator " style="float: right; ">
-                {{ $posts->links() }}
-            </div>
+        </div>
+        <div class="style_paginator " style="float: right;margin-left: auto; ">
+            {{ $posts->links() }}
         </div>
     </div>
     @foreach ($posts as $item)

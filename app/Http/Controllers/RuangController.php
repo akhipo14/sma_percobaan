@@ -18,7 +18,7 @@ class RuangController extends Controller
         $text = "Anda yakin ingin menghapus data ?";
         confirmDelete($title, $text);
         return view('admin.ruang.index',[
-            'ruangs'=>Ruang::latest()->paginate()
+            'ruangs'=>Ruang::latest()->paginate(5)
         ]);
     }
 

@@ -27,11 +27,11 @@
             <div class=" container mt-3" data-aos="fade-in">
                 <div class="row d-flex justify-content-end">
                     <div class="col-12 d-flex justify-content-end">
-                        <div class="col-3 d-flex justify-content-end me-3">
-                            <p for="selekuy" class="mt-2 text-secondary" style="font-family: 'Inter-boldd'">Tampilkan
+                        <div class=" d-flex ">
+                            <p for="selekuy" class="mt-2 text-secondary me-2" style="font-family: 'Inter-boldd'">Tampilkan
                                 berdasarkan kelas</p>
                         </div>
-                        <div class="col-1">
+                        <div class="">
                             <select class="form-select border-primary"
                                 style="background-color: white; padding:8px 30px;box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;"
                                 aria-label="Default select example" name="kelas" id="kelas">

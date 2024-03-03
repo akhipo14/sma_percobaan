@@ -45,9 +45,9 @@
                     @endif
                 </tbody>
             </table>
-            <div class="style_paginator " style="float: right; ">
-                {{ $kelas->links() }}
-            </div>
+        </div>
+        <div class="style_paginator " style="float: right; margin-left:auto;">
+            {{ $kelas->links() }}
         </div>
     </div>
 
@@ -81,7 +81,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-primary">Edit Ketenagaan</button>
+                            <button type="submit" class="btn btn-primary">Edit </button>
                         </div>
                     </form>
                 </div>

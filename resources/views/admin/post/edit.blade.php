@@ -6,7 +6,7 @@
     <form action="{{ route('posts.update', $posts) }}" enctype="multipart/form-data" method="post">
         @csrf
         @method('put')
-        <div class="card p-3 mb-2 me-4" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="card p-3 mb-2 me-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="font-size: .8em">Judul</label>
                 <input type="text" name="judul" id="judul"
@@ -37,7 +37,7 @@
             </div>
             <div class="mb-3">
                 @if ($posts->foto)
-                    <img class="img-preview " style="max-width: 250px;max-height:250px;margin:0;"
+                    <img class="img-preview rounded" style="max-width: 250px;max-height:250px;margin:0;"
                         src="{{ asset('storage/' . $posts->foto) }}">
                 @else
                     <img class="img-preview " style="max-width: 250px;max-height:250px;margin:0;">

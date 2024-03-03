@@ -2,7 +2,7 @@
 @section('content')
     @include('sweetalert::alert')
 
-    <h3 class="text-primary">Manage Prestasi</h3>
+    <h3 class="text-primary">Manage Bangunan / Ruang</h3>
     <a href="admin-ruang/add" class="btn btn-primary">Tambah
         Bangun Ruang</a>
     <div class="card p-2 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
@@ -24,11 +24,11 @@
                             <th class="px-2 py-1 ">Jumlah</th>
                         </tr> --}}
                         <tr>
-                            <th class="px-2 py-1 col-1">no</th>
-                            <th class="px-2 py-1 col-2" colspan="2"> Nama Bangunan/Ruang</th>
-                            <th class="px-2 py-1 col-1">Jumlah</th>
-                            <th class="px-2 py-1 col-1">Kondisi</th>
-                            <th class="px-2 py-1  col-1">Aksi</th>
+                            <th class="px-2 py-2 col-1">no</th>
+                            <th class="px-2 py-2 col-2 text-start" colspan="2"> Nama Ruang</th>
+                            <th class="px-2 py-2 col-1 text-start">Jumlah</th>
+                            <th class="px-2 py-2 col-1 text-start">Kondisi</th>
+                            <th class="px-2 py-2  col-1 ">Aksi</th>
                         </tr>
 
                     </thead>
@@ -36,11 +36,11 @@
                         @if ($ruangs->isNotEmpty())
                             @foreach ($ruangs as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td colspan="2">{{ $item->jenis_ruang }}</td>
-                                    <td> {{ $item->jumlah }}</td>
-                                    <td> {{ str_replace('-', ' ', $item->kondisi) }}</td>
-                                    <td>
+                                    <td class="px-2 py-1 col-1">{{ $loop->iteration }}</td>
+                                    <td class="px-2 py-1 col-1 text-start" colspan="2">{{ $item->jenis_ruang }}</td>
+                                    <td class="px-2 py-1 col-1 "> {{ $item->jumlah }}</td>
+                                    <td class="px-2 py-1 col-1 text-start"> {{ str_replace('-', ' ', $item->kondisi) }}</td>
+                                    <td class="px-2 py-1 col-1">
                                         <div class="d-flex justify-content-center gap-2">
 
                                             <a class="btn btn-primary btn-sm" href="admin-ruang/{{ $item->id }}/edit"><i
@@ -63,10 +63,10 @@
 
                     </tbody>
                 </table>
-                <div class="style_paginator " style="float: right; ">
-                    {{ $ruangs->links() }}
-                </div>
             </div>
+        </div>
+        <div class="style_paginator " style="float: right; margin-left:auto;margin-top:10px;">
+            {{ $ruangs->links() }}
         </div>
     </div>
 

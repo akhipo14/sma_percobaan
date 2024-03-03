@@ -4,8 +4,8 @@
 
     <h3 class="text-primary">Manage Gallery</h3>
     <a href="/admin-gallery/add" class="btn btn-primary">Tambah</a>
-    <div class="table-responsive">
-        <div class="card p-3 py-1 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+    <div class="card p-3 py-1 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="table-responsive">
             <div class=" table-striped table-hover ">
                 <table class=" table bg-white rounded  ">
                     <thead>
@@ -52,10 +52,10 @@
                         @endif
                     </tbody>
                 </table>
-                <div class="style_paginator " style="float: right; ">
-                    {{ $gallerys->links() }}
-                </div>
             </div>
+        </div>
+        <div class="style_paginator " style="float: right; ">
+            {{ $gallerys->links() }}
         </div>
     </div>
 

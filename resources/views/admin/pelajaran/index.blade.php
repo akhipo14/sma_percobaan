@@ -4,8 +4,8 @@
 
     <h3 class="text-primary">Manage Kelas</h3>
     <button href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahmodal">Tambah</button>
-    <div class="table-responsive">
-        <div class="card p-3 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+    <div class="card p-3 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="table-responsive">
             <div class=" table-striped table-hover ">
                 <table class=" table bg-white rounded  ">
                     <thead>
@@ -48,10 +48,10 @@
                         @endif
                     </tbody>
                 </table>
-                <div class="style_paginator " style="float: right; ">
-                    {{ $pelajarans->links() }}
-                </div>
             </div>
+        </div>
+        <div class="style_paginator " style="float: right;margin-left: auto; ">
+            {{ $pelajarans->links() }}
         </div>
     </div>
 

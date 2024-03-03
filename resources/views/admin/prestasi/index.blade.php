@@ -4,8 +4,8 @@
 
     <h3 class="text-primary">Manage Prestasi</h3>
     <a href="/admin-prestasi/add" class="btn btn-primary">Tambah</a>
-    <div class="table-responsive">
-        <div class="card p-3 py-1 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+    <div class="card p-3 py-1 mb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="table-responsive">
             <div class=" table-striped table-hover ">
                 <table class=" table bg-white rounded  ">
                     <thead>
@@ -49,11 +49,15 @@
                         @endif
                     </tbody>
                 </table>
-                <div class="style_paginator " style="float: right; ">
-                    {{ $prestasis->links() }}
-                </div>
             </div>
         </div>
+        <div class="d-flex">
+            <p style="font-size: .8em;margin-top: 10px;">Total :{{ $total_prestasis }}</p>
+            <div class="style_paginator " style="float: right;margin-left:auto; ">
+                {{ $prestasis->links() }}
+            </div>
+        </div>
+
     </div>
 
 @endsection

@@ -4,7 +4,7 @@
     <form action="{{ Route('gallery.update', $gallerys) }}" enctype="multipart/form-data" method="post">
         @csrf
         @method('put')
-        <div class="card p-3 pb-1 mb-2 me-4" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="card p-3 pb-1 mb-2 me-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="font-size: .8em">Judul</label>
                 <input type="text" name="judul" id="judul"

@@ -1,14 +1,29 @@
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl  fixed-start  "
-    id="sidenav-main">
-    <div class="sidenav-header mb-3" style="position: fixed; z-index: 5; background-color:white;">
-        <i class="fas fa-times  cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-            aria-hidden="true" id="iconSidenav"></i>
+{{-- <aside class="sidenav  navbar navbar-vertical bg-white navbar-expand-xs border-0 border-radius-xl  fixed-start  "
+    id="sidenav-main"> --}}
+<style>
+    #sidenav-main {
+        width: 100vh;
+        /* Menyesuaikan lebar sidenav */
+    }
+</style>
+<aside class="sidenav navbar  navbar-vertical bg-white navbar-expand-xs border-0 border-radius-xl fixed-start"
+    id="sidenav-main" style="width: 100vh;">
+    <div class="d-flex justify-content-center">
+        <div class="sidenav-header mb-3 bg-white"
+            style=" display: flex;;position: fixed; z-index: 5;box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;">
+            <a class="m-0" href="https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html" target="_blank">
+                <img id="sidenav-img" style="width: 75%;margin: 15px;" src="{{ asset('assets/img/logo.png') }}">
+            </a>
+            <hr class="horizontal dark mt-0">
+        </div>
+    </div>
+    {{-- <div class="sidenav-header mb-3" style="position: fixed; z-index: 5; background-color:white;">
         <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html "
             target="_blank">
-            <img src="{{ asset('assets/img/logo.png') }}" class="navbar-brand-img " alt="main_logo">
+            <img src="{{ asset('assets/img/logo.png') }}" class="navbar-brand-img " style="width:auto; height: 250px;">
         </a>
         <hr class="horizontal dark mt-0">
-    </div>
+    </div> --}}
 
     <ul class="navbar-nav collapse navbar-collapse" style="margin-top: 15vh; height: 85vh;">
         <li class="nav-item">
@@ -52,7 +67,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  {{ Request::is('admin-sdm') ? 'active' : '' }}" href="/admin-sdm">
+            <a class="nav-link  {{ Request::is('admin-sdm*') ? 'active' : '' }}" href="/admin-sdm">
                 <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fa-solid fa-users-gear text-primary"></i>
                 </div>
@@ -60,7 +75,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link "href="#submenu2" data-bs-toggle="collapse">
+            <a class="nav-link "href=" #submenu2" data-bs-toggle="collapse">
                 <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fa-solid fa-book text-primary"></i>
                 </div>
@@ -109,7 +124,7 @@
         <li class="nav-item">
             <a class="nav-link {{ Request::is('admin-ruang*') ? 'active' : '' }}" href="/admin-ruang">
                 <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fa-solid fa-book-open text-primary"></i>
+                    <i class="fa-solid fa-door-open text-primary"></i>
                 </div>
                 <span class="nav-link-text ms-1">Manage Ruangan</span>
             </a>
@@ -117,7 +132,7 @@
         <li class="nav-item">
             <a class="nav-link {{ Request::is('admin-classroom*') ? 'active' : '' }}" href="/admin-classroom">
                 <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fa-solid fa-book-open text-primary"></i>
+                    <i class="fa-solid fa-link text-primary"></i>
                 </div>
                 <span class="nav-link-text ms-1">Manage Classroom</span>
             </a>
@@ -125,19 +140,26 @@
         <li class="nav-item">
             <a class="nav-link {{ Request::is('admin-prestasi*') ? 'active' : '' }}" href="/admin-prestasi">
                 <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fa-solid fa-book-open text-primary"></i>
+                    <i class="fa-solid fa-medal text-primary"></i>
                 </div>
                 <span class="nav-link-text ms-1">Manage Prestasi</span>
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link  {{ Request::is('admin-absen-sdm*') ? 'active' : '' }}" href="/admin-absen-sdm">
+                <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-users-gear text-primary"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Absensi SDM</span>
+            </a>
+        </li>
+        {{-- <li class="nav-item">
             <a class="nav-link "href="#submenu2" data-bs-toggle="collapse">
                 <div class=" border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fa-solid fa-book text-primary"></i>
                 </div>
                 <span class="nav-link-text ms-1">Manage Absensi</span>
             </a>
-            {{-- sub menu --}}
             <ul class="collapse nav flex-column" id="submenu2" data-bs-parent="#menu">
                 <li class="nav-item">
                     <a class="nav-link  {{ Request::is('admin-absen-sdm*') ? 'active' : '' }}"
@@ -160,8 +182,7 @@
                 </li>
 
             </ul>
-            {{-- end sub menu --}}
-        </li>
+        </li> --}}
         {{-- <li class="nav-item">
                 <a class="nav-link " href="./pages/rtl.html">
                     <div

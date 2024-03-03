@@ -3,7 +3,7 @@
     <h3 class="text-primary">Tambah SMD</h3>
     <form action="/admin-sdm/add" enctype="multipart/form-data" method="post">
         @csrf
-        <div class="card p-3 mb-2 me-4" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="card p-3 mb-2 me-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="font-size: .8em">Nama</label>
                 <input type="text" name="nama" id="nama"

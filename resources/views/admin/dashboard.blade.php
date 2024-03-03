@@ -1,10 +1,10 @@
 @extends('admin.main')
 @section('content')
     @include('sweetalert::alert')
-    <h3 class="text-primary mb-3">Welcome {{ auth()->user()->name }} !</h3>
+    <h3 class="text-primary mb-3">Selamat Datang, {{ auth()->user()->name }} !</h3>
 
     <div class="row ">
-        <div class="col">
+        <div class="col-md-3 mb-3 mb-3">
             <div class="card">
                 <div class="card-body p-3 ">
                     <div class="row gap-0">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-md-3 mb-3">
             <div class="card">
                 <div class="card-body p-3 ">
                     <div class="row gap-0">
@@ -36,15 +36,15 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-md-3 mb-3">
             <div class="card">
                 <div class="card-body p-3 ">
                     <div class="row gap-0">
-                        <div class="col-8 ">
+                        <div class="col-9 ">
                             <h3 class=" mb-0 text-uppercase font-weight-bolder">{{ $kelas }}</h4>
                                 <p class="mb-0 font-weight-bold text-sm">Ruang Kelas</p>
                         </div>
-                        <div class="col-4 tex-center " style="display: flex;justify-content: center;align-items: center">
+                        <div class="col-3 tex-center " style="display: flex;justify-content: center;align-items: center">
                             <h2><i class="fa-solid fa-door-closed text-primary"></i>
                             </h2>
                         </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-md-3 mb-3">
             <div class="card">
                 <div class="card-body p-3 ">
                     <div class="row gap-0">

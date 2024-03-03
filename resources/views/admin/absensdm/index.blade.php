@@ -7,15 +7,16 @@
     <h3 class="text-primary">Absensi Pegawai</h3>
     <div class="d-flex justify-content-start">
         <form method="GET" action="{{ route('absensdms.show') }}">
-            <div class="row g-3 align-items-center mb-3">
-                <div class="col-auto">
-                    <label class="form-label " style="font-size: 1em">Pilih Tanggal</label>
+            <div class="" style="display:block;;justify-content: center;align-items: center;gap:10px;">
+                <div class=" mb-0">
+                    <p class="form-label " style="font-size: 1em;">Pilih Tanggal</p>
                 </div>
-                <div class="col-auto" style="display: flex;justify-content: center;align-items: center">
-                    <input type="date" class="form-control" name="created_at" value="{{ $inputdate }}">
-                    <div class="col-auto mt-3 ms-2" style="display: flex;justify-content: center;align-items: center">
-                        <button type="submit" class="btn btn-primary">Pilih</button>
+                <div style=" display: flex;justify-content: center;">
+
+                    <div class="" style="margin-right: 10px">
+                        <input type="date" class="form-control" name="created_at" value="{{ $inputdate }}">
                     </div>
+                    <button type="submit" class="btn btn-primary">Pilih</button>
                 </div>
             </div>
         </form>

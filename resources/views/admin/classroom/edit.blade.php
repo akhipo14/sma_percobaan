@@ -4,7 +4,7 @@
     <form action="/admin-classroom/{{ $classrooms->id }}" enctype="multipart/form-data" method="post">
         @csrf
         @method('put')
-        <div class="card p-3 mb-2 me-4" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="card p-3 mb-2 me-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
             <div class="mb-3">
                 <label class="form-label " style="font-size: .8em">Mata pelajaran</label>
                 <select class="form-select " aria-label="Default select example" name="mapel_id">

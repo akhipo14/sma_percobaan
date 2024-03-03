@@ -18,7 +18,9 @@ class PrestasiController extends Controller
         $text = "Anda yakin ingin menghapus data ?";
         confirmDelete($title, $text);
         return view('admin.prestasi.index',[
-            'prestasis'=>Prestasi::latest()->paginate()
+            'prestasis'=>Prestasi::latest()->paginate(5),
+            'total_prestasis'=>Prestasi::count()
+
         ]);
     }
 
@@ -69,7 +71,7 @@ class PrestasiController extends Controller
     public function show()
     {
         return view('user.prestasi.index',[
-            'prestasis'=>Prestasi::latest()->paginate(10),
+            'prestasis'=>Prestasi::latest()->paginate(5),
             'total_prestasis'=>Prestasi::count()
         ]);
     }
