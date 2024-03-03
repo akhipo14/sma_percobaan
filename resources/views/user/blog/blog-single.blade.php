@@ -13,7 +13,8 @@
             <div class="container">
                 <ol>
                     <li><a href="/">Home</a></li>
-                    <li><a href="berita.html">Berita</a></li>
+                    <li><a href="/berita">Berita</a></li>
+                    <li><a href="/berita/{{ $posts->slug }}">{{ $posts->judul }}</a></li>
                 </ol>
             </div>
         </section>
@@ -24,8 +25,8 @@
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-lg-8 entries">
-                        <article class="entry entry-single">
-                            <div class="entry-img p-3">
+                        <article class="entry entry-single" style="padding:20px">
+                            <div class="entry-img p-4">
                                 <img src="{{ asset('storage/' . $posts->foto) }}"
                                     style="max-height:400px;object-fit: cover;" class="posisi-foto-blog  rounded"
                                     alt="" class="img-fluid" />
@@ -108,14 +109,16 @@
                             <div class="entry-footer">
                                 <i class="bi bi-folder"></i>
                                 <ul class="cats">
-                                    <li><a href="#">{{ $posts->kategori->nama_kategori }}</a></li>
+                                    <li><a
+                                            href="/berita-kategori/{{ $posts->kategori->slug }}">{{ $posts->kategori->nama_kategori }}</a>
+                                    </li>
                                 </ul>
-
+                                {{-- 
                                 @foreach ($kategoris as $item)
                                     <ul class="tags gap-2">
                                         <li class="bi bi-tags me-2"><a href="#">{{ $item->nama_kategori }}</a></li>
                                     </ul>
-                                @endforeach
+                                @endforeach --}}
 
                             </div>
                         </article>
@@ -299,7 +302,7 @@
                     <!-- End blog entries list -->
 
                     <div class="col-lg-4">
-                        <div class="sidebar">
+                        <div class="sidebar m-0">
                             {{-- <h3 class="sidebar-title">Search</h3>
                             <div class="sidebar-item search-form">
                                 <form action="">
@@ -314,8 +317,10 @@
                                 <ul>
                                     @foreach ($kategoris as $item)
                                         <li>
-                                            <a href="#">{{ $item->nama_kategori }}
-                                                <span>({{ $item->post_count }})</span></a>
+                                            @if ($item->post_count > 0)
+                                                <a href="/berita-kategori/{{ $item->slug }}">{{ $item->nama_kategori }}
+                                                    <span>({{ $item->post_count }})</span></a>
+                                            @endif
                                         </li>
                                     @endforeach
 
@@ -329,7 +334,7 @@
                                     <div class="post-item clearfix">
                                         <img src="{{ asset('storage/' . $item->foto) }}" alt="" />
                                         <h4><a
-                                                href="/berita/{{ $item->id }}">{{ substr(strtoupper($item->judul), 0, 30) }}...</a>
+                                                href="/berita/{{ $item->slug }}">{{ substr(strtoupper($item->judul), 0, 30) }}...</a>
                                         </h4>
                                         <time datetime="2020-01-01">{{ $item->updated_at }}</time>
                                     </div>

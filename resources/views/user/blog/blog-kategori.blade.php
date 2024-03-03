@@ -11,12 +11,22 @@
                     </div>
                 </div>
             </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/berita">Berita</a></li>
+                    <li><a
+                            href="/berita-kategori/{{ $posts[0]->kategori->slug }}">{{ $posts[0]->kategori->nama_kategori }}</a>
+                    </li>
+                </ol>
+            </div>
+
         </section>
         <!-- End Breadcrumbs -->
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">
             <div class="container " data-aos="fade-in">
-                <div class="row justify-content-start mt-5">
+                <div class="row justify-content-start mt-2">
                     @foreach ($posts as $item)
                         <div class="col-md-4 ">
                             <div class="icon-box p-3" data-aos="fade-up">

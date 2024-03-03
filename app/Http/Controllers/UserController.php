@@ -29,9 +29,13 @@ class UserController extends Controller
         ]);
     }
 
-    public function blog_single(Post $post){
-        $post_id = Post::find($post->id);
-        $post_all_by_kategori = Post::where('kategori_id',$post->kategori_id)->get();
+    public function blog_single($slug){
+      
+        $post_id = Post::where('slug',$slug)->firstOrFail();
+
+        $kategori_id = $post_id->kategori_id;
+        // dd($kategori_id);
+        $post_all_by_kategori = Post::where('kategori_id',$kategori_id)->latest()->paginate(3);
         $kategoris = Kategori::withCount('post' )->get();
         return view('user.blog.blog-single',[
             'posts'=>$post_id,
@@ -39,6 +43,22 @@ class UserController extends Controller
             'post_all_by_kategori' => $post_all_by_kategori,
         ]);
     }
+
+    public function blog_kategori($slug){
+        $kategori = Kategori::where('slug',$slug)->firstOrFail();
+
+        $kategori_id = $kategori->id ;
+        
+        // dd($kategori_id);
+        $post_all_by_kategori = Post::where('kategori_id',$kategori_id)->latest()->paginate();
+        $post = $post_all_by_kategori;
+        // dd($post);
+        $kategoris = Kategori::withCount('post' )->get();
+        return view('user.blog.blog-kategori',[
+            'posts'=>$post,
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

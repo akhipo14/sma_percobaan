@@ -54,6 +54,7 @@ Route::get('/fasilitas',[FasilitasController::class,'index']);
 Route::get('/guru-dan-karyawan',[SDMUserController::class,'index']);
 Route::get('/berita',[BeritaController::class,'index']);
 Route::get('/berita/{post}',[UserController::class,'blog_single']);
+Route::get('/berita-kategori/{slug}',[UserController::class,'blog_kategori']);
 Route::get('/prestasi',[PrestasiController::class,'show']);
 Route::get('/kontak',[KontakController::class,'index']);
 Route::get('/jadwal_kelas',[JadwalController::class,'jadwaluser']);

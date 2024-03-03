@@ -4,7 +4,7 @@
            <div class="container">
                <div class="row">
                    <div class="col-lg-4 col-md-6 footer-info">
-                       <img src="assets/img/logo-footer.png" alt="" class="img-fluid" />
+                       <img src="{{ asset('assets/img/logo-footer.png') }}" alt="" class="img-fluid" />
                        <p style="margin-top: 5px">
                            “Honesty, Creativity, and Morality ; Are our Cultures <br />
                            Terakreditasi “A”
